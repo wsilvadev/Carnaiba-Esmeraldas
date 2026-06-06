@@ -3,12 +3,10 @@
     <div class="container">
       <div class="cert-grid">
         <div class="cert-content">
-          <p class="section-label">Transparência Total</p>
-          <h2 class="section-title">Origem<br/><em>Certificada</em></h2>
+          <p class="section-label">{{ t('cert.label') }}</p>
+          <h2 class="section-title">{{ t('cert.title') }}<br/><em>{{ t('cert.titleEm') }}</em></h2>
           <div class="divider"></div>
-          <p class="cert-text">
-            Trabalhamos filiados à cooperativa de garimpeiros da Serra da Carnaíba, com toda documentação exigida pela Agência Nacional de Mineração (ANM). Cada pedra vendida acompanha seu documento de origem.
-          </p>
+          <p class="cert-text">{{ t('cert.text') }}</p>
           <div class="docs">
             <div class="doc-item" v-for="d in docs" :key="d.titulo">
               <div class="doc-check">✓</div>
@@ -26,7 +24,7 @@
             <p class="cert-card-desc">{{ c.desc }}</p>
           </div>
           <div class="cert-disclaimer">
-            <p>Toda compra acompanha nota fiscal e documento de origem da cooperativa. Solicitamos filiação e regularidade antes de qualquer venda.</p>
+            <p>{{ t('cert.disclaimer') }}</p>
           </div>
         </div>
       </div>
@@ -35,17 +33,23 @@
 </template>
 
 <script setup>
-const docs = [
-  { titulo: 'Filiação à Cooperativa', desc: 'Associados à cooperativa regional com registro ativo na ANM' },
-  { titulo: 'Documento de Origem por Pedra', desc: 'Emitido pela cooperativa para cada gema comercializada' },
-  { titulo: 'Nota Fiscal em Toda Venda', desc: 'CNPJ regularizado, NF-e emitida para pessoa física ou jurídica' },
-  { titulo: 'Extração em Área Licenciada', desc: 'Área de lavra com autorização vigente da Agência Nacional de Mineração' },
-]
-const certCards = [
-  { icon: '⬡', titulo: 'ANM', desc: 'Agência Nacional de Mineração — órgão regulador federal' },
-  { icon: '⬡', titulo: 'Cooperativa', desc: 'Filiação ativa com direito a emissão de documentos de origem' },
-  { icon: '⬡', titulo: 'NF-e', desc: 'Nota fiscal eletrônica em 100% das transações comerciais' },
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const docs = computed(() => [
+  { titulo: t('cert.doc1Title'), desc: t('cert.doc1Desc') },
+  { titulo: t('cert.doc2Title'), desc: t('cert.doc2Desc') },
+  { titulo: t('cert.doc3Title'), desc: t('cert.doc3Desc') },
+  { titulo: t('cert.doc4Title'), desc: t('cert.doc4Desc') },
+])
+
+const certCards = computed(() => [
+  { icon: '⬡', titulo: t('cert.card1Title'), desc: t('cert.card1Desc') },
+  { icon: '⬡', titulo: t('cert.card2Title'), desc: t('cert.card2Desc') },
+  { icon: '⬡', titulo: t('cert.card3Title'), desc: t('cert.card3Desc') },
+])
 </script>
 
 <style scoped>
@@ -62,7 +66,7 @@ const certCards = [
 .section-title {
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   color: var(--cream);
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.15;
 }
 .section-title em { font-style: italic; color: var(--gold); }
@@ -82,7 +86,7 @@ const certCards = [
   flex-shrink: 0; margin-top: 2px;
 }
 .doc-titulo {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -101,10 +105,10 @@ const certCards = [
 .cert-card:hover { border-color: rgba(201,168,76,0.3); }
 .cert-card-icon { font-size: 1.5rem; color: var(--gold); margin-bottom: 0.8rem; }
 .cert-card-titulo {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 400;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--cream);
   margin-bottom: 0.5rem;

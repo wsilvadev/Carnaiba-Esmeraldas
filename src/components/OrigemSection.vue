@@ -5,25 +5,21 @@
         <div class="visual-block">
           <div class="gem-large">◆</div>
           <div class="origin-badge">
-            <span class="badge-num">100%</span>
-            <span class="badge-text">Origem<br/>Verificada</span>
+            <span class="badge-num">{{ t('origin.badgeNum') }}</span>
+            <span class="badge-text" v-html="badgeText" />
           </div>
         </div>
         <div class="coords">
-          <span>11°7'S 41°22'W</span>
-          <span>Serra da Carnaíba · Bahia</span>
+          <span>{{ t('origin.coords1') }}</span>
+          <span class="coords-place font-accent">{{ t('origin.coords2') }}</span>
         </div>
       </div>
       <div class="origem-content">
-        <p class="section-label">A Nossa História</p>
-        <h2 class="section-title">Do Subsolo<br/><em>para Você</em></h2>
+        <p class="section-label">{{ t('origin.label') }}</p>
+        <h2 class="section-title heading-serif">{{ t('origin.title') }}<br/><em>{{ t('origin.titleEm') }}</em></h2>
         <div class="divider"></div>
-        <p class="origem-text">
-          A Serra da Carnaíba é reconhecida mundialmente como uma das mais importantes fontes de esmeraldas do planeta. Nossas pedras são extraídas diretamente desta região, com toda a rastreabilidade e documentação exigida pela ANM.
-        </p>
-        <p class="origem-text">
-          Ao comprar conosco, você elimina todos os intermediários — do garimpo direto para as suas mãos. Isso significa origem garantida, preço justo e a certeza de estar adquirindo uma gema genuinamente brasileira.
-        </p>
+        <p class="origem-text">{{ t('origin.text1') }}</p>
+        <p class="origem-text">{{ t('origin.text2') }}</p>
         <div class="pilares">
           <div class="pilar" v-for="p in pilares" :key="p.titulo">
             <span class="pilar-icon">{{ p.icon }}</span>
@@ -39,11 +35,18 @@
 </template>
 
 <script setup>
-const pilares = [
-  { icon: '⬡', titulo: 'Extração Cooperada', desc: 'Filiados à cooperativa da região, com documentação ANM regularizada.' },
-  { icon: '⬡', titulo: 'Rastreabilidade Total', desc: 'Cada pedra tem documento de origem emitido pela cooperativa.' },
-  { icon: '⬡', titulo: 'Preço de Fonte', desc: 'Sem atravessadores. O valor que você paga chega ao garimpeiro.' },
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const badgeText = computed(() => t('origin.badgeText').replace(' ', '<br/>'))
+
+const pilares = computed(() => [
+  { icon: '⬡', titulo: t('origin.pillar1Title'), desc: t('origin.pillar1Desc') },
+  { icon: '⬡', titulo: t('origin.pillar2Title'), desc: t('origin.pillar2Desc') },
+  { icon: '⬡', titulo: t('origin.pillar3Title'), desc: t('origin.pillar3Desc') },
+])
 </script>
 
 <style scoped>
@@ -104,7 +107,7 @@ const pilares = [
   align-items: center;
 }
 .badge-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 600;
   color: #0a1a10;
@@ -126,17 +129,19 @@ const pilares = [
 }
 .coords span {
   font-size: 0.65rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.06em;
   color: rgba(245,240,232,0.3);
   text-transform: uppercase;
+}
+.coords-place {
+  color: var(--gold);
+  letter-spacing: 0.2em;
 }
 .section-title {
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   color: var(--cream);
-  font-weight: 300;
   line-height: 1.15;
 }
-.section-title em { font-style: italic; color: var(--gold); }
 .origem-text {
   font-size: 0.82rem;
   line-height: 2.2;
@@ -163,7 +168,7 @@ const pilares = [
   flex-shrink: 0;
 }
 .pilar-titulo {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.15em;

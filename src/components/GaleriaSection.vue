@@ -2,26 +2,22 @@
   <section id="galeria" class="galeria">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">Vídeos e Fotos</p>
-        <h2 class="section-title">Galeria de Gemas</h2>
+        <p class="section-label">{{ t('gallery.label') }}</p>
+        <h2 class="section-title">{{ t('gallery.title') }}</h2>
         <div class="divider center"></div>
-        <p class="section-desc">
-          Adicione seus vídeos do YouTube e fotos reais das pedras aqui. Cada link do YouTube é incorporado diretamente — sem custo de hospedagem.
-        </p>
+        <p class="section-desc">{{ t('gallery.desc') }}</p>
       </div>
 
       <div class="galeria-grid">
         <div class="video-card featured">
           <div class="video-placeholder">
             <div class="play-icon">▶</div>
-            <p class="video-label">Vídeo de Extração</p>
-            <p class="video-hint">Cole aqui o link do seu vídeo do YouTube</p>
-            <code class="video-code">&lt;iframe src="youtube.com/embed/SEU_VIDEO_ID"&gt;</code>
+            <p class="video-label">{{ t('gallery.extraction') }}</p>
           </div>
           <div class="video-info">
-            <span class="video-tag">Extração</span>
-            <h3>A Pedra Saindo do Chão</h3>
-            <p>Serra da Carnaíba · Bahia · 2024</p>
+            <span class="video-tag">{{ t('gallery.extraction') }}</span>
+            <h3>{{ t('gallery.video1Title') }}</h3>
+            <p>{{ t('gallery.video1Sub') }}</p>
           </div>
         </div>
 
@@ -29,7 +25,7 @@
           <div class="foto-card" v-for="i in 4" :key="i">
             <div class="foto-placeholder" :style="{ background: fotoColors[i-1] }">
               <span class="foto-icon">◈</span>
-              <span class="foto-num">Foto {{ i }}</span>
+              <span class="foto-num">{{ t('gallery.photo', { n: i }) }}</span>
             </div>
           </div>
         </div>
@@ -37,36 +33,36 @@
         <div class="video-card">
           <div class="video-placeholder small">
             <div class="play-icon small">▶</div>
-            <p class="video-label">Vídeo da Gema na Luz</p>
+            <p class="video-label">{{ t('gallery.video2Title') }}</p>
           </div>
           <div class="video-info">
-            <span class="video-tag">Qualidade</span>
-            <h3>Reflexo e Transparência</h3>
-            <p>Pedra sob luz natural e artificial</p>
+            <span class="video-tag">{{ t('gallery.quality') }}</span>
+            <h3>{{ t('gallery.video2Title') }}</h3>
+            <p>{{ t('gallery.video2Sub') }}</p>
           </div>
         </div>
 
         <div class="video-card">
           <div class="video-placeholder small">
             <div class="play-icon small">▶</div>
-            <p class="video-label">Comparativo de Tamanho</p>
+            <p class="video-label">{{ t('gallery.video3Title') }}</p>
           </div>
           <div class="video-info">
-            <span class="video-tag">Referência</span>
-            <h3>Escala Real das Pedras</h3>
-            <p>Medidas e peso em quilates</p>
+            <span class="video-tag">{{ t('gallery.reference') }}</span>
+            <h3>{{ t('gallery.video3Title') }}</h3>
+            <p>{{ t('gallery.video3Sub') }}</p>
           </div>
         </div>
-      </div>
-
-      <div class="galeria-nota">
-        <p>🎯 <strong>Como adicionar seus vídeos:</strong> Suba o vídeo no YouTube → Copie o ID do vídeo → Cole no lugar de <code>SEU_VIDEO_ID</code> no componente GaleriaSection.vue</p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const fotoColors = [
   'linear-gradient(135deg, #1a4a2e, #2d7a4f)',
   'linear-gradient(135deg, #0d2b1a, #1a5a35)',
@@ -84,7 +80,7 @@ const fotoColors = [
 .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--cream);
-  font-weight: 300;
+  font-weight: 500;
 }
 .section-desc {
   max-width: 560px;
@@ -98,7 +94,6 @@ const fotoColors = [
   grid-template-columns: 1.5fr 1fr;
   grid-template-rows: auto auto;
   gap: 2px;
-  margin-bottom: 2rem;
 }
 .video-card { background: rgba(13,43,26,0.4); border: 1px solid rgba(45,122,79,0.1); }
 .video-card.featured { grid-row: span 1; }
@@ -129,20 +124,6 @@ const fotoColors = [
   letter-spacing: 0.1em;
   color: rgba(245,240,232,0.7);
 }
-.video-hint {
-  font-size: 0.65rem;
-  color: rgba(245,240,232,0.35);
-  max-width: 200px;
-}
-.video-code {
-  font-size: 0.6rem;
-  color: rgba(77,184,122,0.5);
-  background: rgba(0,0,0,0.3);
-  padding: 0.3rem 0.6rem;
-  border-radius: 2px;
-  display: block;
-  margin-top: 0.5rem;
-}
 .video-info {
   padding: 1rem 1.25rem;
   display: flex;
@@ -151,14 +132,14 @@ const fotoColors = [
 }
 .video-tag {
   font-size: 0.55rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gold);
 }
 .video-info h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 500;
   color: var(--cream);
 }
 .video-info p {
@@ -188,28 +169,9 @@ const fotoColors = [
 }
 .foto-num {
   font-size: 0.6rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.25);
-}
-.galeria-nota {
-  background: rgba(45,122,79,0.08);
-  border: 1px solid rgba(45,122,79,0.15);
-  border-left: 3px solid var(--green-gem);
-  padding: 1.2rem 1.5rem;
-  border-radius: 2px;
-}
-.galeria-nota p {
-  font-size: 0.78rem;
-  line-height: 1.8;
-  color: rgba(245,240,232,0.6);
-}
-.galeria-nota strong { color: var(--green-light); font-weight: 400; }
-.galeria-nota code {
-  background: rgba(0,0,0,0.3);
-  color: var(--green-light);
-  padding: 0.1rem 0.4rem;
-  font-size: 0.72rem;
 }
 @media (max-width: 768px) {
   .galeria-grid { grid-template-columns: 1fr; }

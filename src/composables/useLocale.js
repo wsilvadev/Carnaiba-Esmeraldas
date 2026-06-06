@@ -1,0 +1,219 @@
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { trackLocaleChange, trackLocaleDetected } from '../analytics'
+
+const COUNTRY_CONFIG = {
+  BR: { locale: 'pt', currency: 'BRL' },
+  US: { locale: 'en', currency: 'USD' },
+  GB: { locale: 'en', currency: 'GBP' },
+  CA: { locale: 'en', currency: 'CAD' },
+  AU: { locale: 'en', currency: 'AUD' },
+  NZ: { locale: 'en', currency: 'NZD' },
+  DE: { locale: 'de', currency: 'EUR' },
+  FR: { locale: 'fr', currency: 'EUR' },
+  IT: { locale: 'en', currency: 'EUR' },
+  ES: { locale: 'es', currency: 'EUR' },
+  PT: { locale: 'pt', currency: 'EUR' },
+  NL: { locale: 'en', currency: 'EUR' },
+  BE: { locale: 'fr', currency: 'EUR' },
+  AT: { locale: 'de', currency: 'EUR' },
+  CH: { locale: 'de', currency: 'CHF' },
+  MX: { locale: 'es', currency: 'MXN' },
+  AR: { locale: 'es', currency: 'ARS' },
+  CL: { locale: 'es', currency: 'CLP' },
+  CO: { locale: 'es', currency: 'COP' },
+  PE: { locale: 'es', currency: 'PEN' },
+  UY: { locale: 'es', currency: 'UYU' },
+  JP: { locale: 'en', currency: 'JPY' },
+  CN: { locale: 'en', currency: 'CNY' },
+  HK: { locale: 'en', currency: 'HKD' },
+  SG: { locale: 'en', currency: 'SGD' },
+  IN: { locale: 'hi', currency: 'INR' },
+  AE: { locale: 'en', currency: 'AED' },
+  SA: { locale: 'en', currency: 'SAR' },
+  QA: { locale: 'en', currency: 'QAR' },
+  ZA: { locale: 'en', currency: 'ZAR' },
+}
+
+const DEFAULT_CONFIG = { locale: 'en', currency: 'USD' }
+
+const countryCode = ref(null)
+const currency = ref('BRL')
+const rates = ref({ BRL: 1 })
+const ratesLoaded = ref(false)
+const localeReady = ref(false)
+const ratesSource = ref(null)
+
+const LOCALE_STORAGE_KEY = 'carnaiba-locale-override'
+const CURRENCY_STORAGE_KEY = 'carnaiba-currency-override'
+
+const LOCALE_CURRENCY = {
+  pt: 'BRL',
+}
+
+function configForCountry(code) {
+  return COUNTRY_CONFIG[code] || DEFAULT_CONFIG
+}
+
+function resolveCurrency(localeCode) {
+  if (LOCALE_CURRENCY[localeCode]) return LOCALE_CURRENCY[localeCode]
+  return configForCountry(countryCode.value).currency
+}
+
+async function detectCountry() {
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) })
+    if (!res.ok) throw new Error('geo failed')
+    const data = await res.json()
+    countryCode.value = data.country_code || null
+    return configForCountry(data.country_code)
+  } catch {
+    countryCode.value = null
+    return DEFAULT_CONFIG
+  }
+}
+
+async function fetchRatesFromFrankfurter(targetCurrency) {
+  const res = await fetch(
+    `https://api.frankfurter.app/latest?from=BRL&to=${targetCurrency}`,
+    { signal: AbortSignal.timeout(5000) },
+  )
+  if (!res.ok) throw new Error('frankfurter failed')
+  const data = await res.json()
+  const rate = data.rates?.[targetCurrency]
+  if (!rate) throw new Error('rate missing')
+  return { BRL: 1, [targetCurrency]: rate }
+}
+
+async function fetchRatesFromOpenErApi() {
+  const res = await fetch('https://open.er-api.com/v6/latest/BRL', {
+    signal: AbortSignal.timeout(5000),
+  })
+  if (!res.ok) throw new Error('open.er-api failed')
+  const data = await res.json()
+  if (data.result !== 'success' || !data.rates) throw new Error('open.er-api invalid')
+  return { BRL: 1, ...data.rates }
+}
+
+async function fetchRates(targetCurrency) {
+  if (targetCurrency === 'BRL') {
+    rates.value = { BRL: 1 }
+    ratesLoaded.value = true
+    ratesSource.value = 'local'
+    return
+  }
+
+  ratesLoaded.value = false
+
+  try {
+    rates.value = await fetchRatesFromOpenErApi()
+    ratesLoaded.value = true
+    ratesSource.value = 'open.er-api.com'
+    return
+  } catch {
+    // fallback abaixo
+  }
+
+  try {
+    rates.value = await fetchRatesFromFrankfurter(targetCurrency)
+    ratesLoaded.value = true
+    ratesSource.value = 'frankfurter.app'
+  } catch {
+    rates.value = { BRL: 1 }
+    ratesLoaded.value = true
+    ratesSource.value = null
+  }
+}
+
+export async function initLocale(i18n) {
+  const savedLocale = localStorage.getItem(LOCALE_STORAGE_KEY)
+
+  const geoConfig = await detectCountry()
+
+  const localeToUse = savedLocale || geoConfig.locale
+  i18n.global.locale.value = localeToUse
+  document.documentElement.lang = localeToUse
+
+  currency.value = resolveCurrency(localeToUse)
+  await fetchRates(currency.value)
+  localeReady.value = true
+
+  if (!savedLocale) {
+    trackLocaleDetected(localeToUse, currency.value, countryCode.value)
+  }
+}
+
+export function useLocale() {
+  const { locale, t } = useI18n()
+
+  const availableLocales = [
+    { code: 'hi', label: 'हिन्दी', flag: '🇮🇳' },
+    { code: 'pt', label: 'Português', flag: '🇧🇷' },
+    { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+  ]
+
+  const countryLabel = computed(() => {
+    if (!countryCode.value) return null
+    try {
+      return new Intl.DisplayNames([locale.value], { type: 'region' }).of(countryCode.value)
+    } catch {
+      return countryCode.value
+    }
+  })
+
+  const isManualCurrency = computed(() =>
+    Boolean(localStorage.getItem(CURRENCY_STORAGE_KEY)),
+  )
+
+  async function setLocale(code) {
+    const previous = locale.value
+    locale.value = code
+    document.documentElement.lang = code
+    localStorage.setItem(LOCALE_STORAGE_KEY, code)
+    localStorage.removeItem(CURRENCY_STORAGE_KEY)
+
+    currency.value = resolveCurrency(code)
+    await fetchRates(currency.value)
+
+    trackLocaleChange(previous, code, currency.value)
+  }
+
+  async function setCurrency(code) {
+    currency.value = code
+    localStorage.setItem(CURRENCY_STORAGE_KEY, code)
+    await fetchRates(code)
+  }
+
+  async function applyCountryPricing() {
+    localStorage.removeItem(CURRENCY_STORAGE_KEY)
+    currency.value = resolveCurrency(locale.value)
+    await fetchRates(currency.value)
+  }
+
+  function resetLocaleOverride() {
+    localStorage.removeItem(LOCALE_STORAGE_KEY)
+    localStorage.removeItem(CURRENCY_STORAGE_KEY)
+    window.location.reload()
+  }
+
+  return {
+    locale,
+    t,
+    currency,
+    rates,
+    ratesLoaded,
+    ratesSource,
+    localeReady,
+    countryCode,
+    countryLabel,
+    isManualCurrency,
+    availableLocales,
+    setLocale,
+    setCurrency,
+    applyCountryPricing,
+    resetLocaleOverride,
+  }
+}

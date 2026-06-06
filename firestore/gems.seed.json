@@ -1,0 +1,433 @@
+{
+  "carnaiba-01": {
+    "id": 1,
+    "slug": "carnaiba-01",
+    "ordem": 1,
+    "categoria": "bruta",
+    "peso": 8.4,
+    "precoBRL": 28500,
+    "disponivel": true,
+    "gradiente": "linear-gradient(135deg, #1a4a2e, #2d7a4f)",
+    "dimensoes": "14 × 10 × 8 mm",
+    "formato": "bruta",
+    "tratamento": "nenhum",
+    "certificacao": "cooperativa",
+    "videos": [],
+    "imagens": [
+      {
+        "id": "main",
+        "gradiente": "linear-gradient(135deg, #1a4a2e, #2d7a4f)",
+        "storagePath": "gems/carnaiba-01/main.jpg"
+      },
+      {
+        "id": "side",
+        "gradiente": "linear-gradient(135deg, #0d3320, #1a6640)",
+        "storagePath": "gems/carnaiba-01/side.jpg"
+      },
+      {
+        "id": "light",
+        "gradiente": "linear-gradient(135deg, #2d7a4f, #4db87a)",
+        "storagePath": "gems/carnaiba-01/light.jpg"
+      }
+    ],
+    "traducoes": {
+      "pt": {
+        "nome": "Carnaíba Nº 01",
+        "tipo": "Bruta",
+        "cor": "Verde Intenso",
+        "claridade": "Alta",
+        "desc": "Esmeralda bruta de coloração verde intensa, com cristalização notável e inclusões naturais típicas da região. Peça ideal para colecionadores e lapidadores."
+      },
+      "en": {
+        "nome": "Carnaíba No. 01",
+        "tipo": "Rough",
+        "cor": "Intense Green",
+        "claridade": "High",
+        "desc": "Rough emerald with intense green coloration, notable crystallization and natural inclusions typical of the region. Ideal for collectors and cutters."
+      },
+      "es": {
+        "nome": "Carnaíba Nº 01",
+        "tipo": "Bruta",
+        "cor": "Verde Intenso",
+        "claridade": "Alta",
+        "desc": "Esmeralda bruta de coloración verde intensa, con cristalización notable e inclusiones naturales típicas de la región. Ideal para coleccionistas y talladores."
+      },
+      "fr": {
+        "nome": "Carnaíba Nº 01",
+        "tipo": "Brute",
+        "cor": "Vert Intense",
+        "claridade": "Haute",
+        "desc": "Émeraude brute à coloration vert intense, cristallisation remarquable et inclusions naturelles typiques de la région."
+      },
+      "de": {
+        "nome": "Carnaíba Nr. 01",
+        "tipo": "Roh",
+        "cor": "Intensives Grün",
+        "claridade": "Hoch",
+        "desc": "Rohsmaragd mit intensiver Grünfärbung, bemerkenswerter Kristallisation und natürlichen Einschlüssen."
+      },
+      "hi": {
+        "nome": "Carnaíba नं. 01",
+        "tipo": "कच्चा",
+        "cor": "गहरा हरा",
+        "claridade": "उच्च",
+        "desc": "गहरे हरे रंग का कच्चा पन्ना, उल्लेखनीय क्रिस्टलीकरण और क्षेत्र के लिए विशिष्ट प्राकृतिक समावेशन। संग्राहकों और काटने वालों के लिए आदर्श।"
+      }
+    }
+  },
+  "carnaiba-02": {
+    "id": 2,
+    "slug": "carnaiba-02",
+    "ordem": 2,
+    "categoria": "lapidada",
+    "peso": 3.2,
+    "precoBRL": 42000,
+    "disponivel": true,
+    "gradiente": "linear-gradient(135deg, #0d3320, #1a6640)",
+    "dimensoes": "9 × 7 × 5 mm",
+    "formato": "oval",
+    "tratamento": "nenhum",
+    "certificacao": "cooperativa",
+    "videos": [],
+    "imagens": [
+      {
+        "id": "main",
+        "gradiente": "linear-gradient(135deg, #0d3320, #1a6640)",
+        "storagePath": "gems/carnaiba-02/main.jpg"
+      },
+      {
+        "id": "top",
+        "gradiente": "linear-gradient(135deg, #1a4a2e, #3a8a5f)",
+        "storagePath": "gems/carnaiba-02/top.jpg"
+      }
+    ],
+    "traducoes": {
+      "pt": {
+        "nome": "Carnaíba Nº 02",
+        "tipo": "Lapidada",
+        "cor": "Verde Médio",
+        "claridade": "Muito Alta",
+        "desc": "Gema lapidada em formato oval com excelente brilho e transparência. Cor equilibrada e proporções harmoniosas para joalheria fina."
+      },
+      "en": {
+        "nome": "Carnaíba No. 02",
+        "tipo": "Faceted",
+        "cor": "Medium Green",
+        "claridade": "Very High",
+        "desc": "Oval-cut gem with excellent brilliance and transparency. Balanced color and harmonious proportions for fine jewelry."
+      },
+      "es": {
+        "nome": "Carnaíba Nº 02",
+        "tipo": "Tallada",
+        "cor": "Verde Medio",
+        "claridade": "Muy Alta",
+        "desc": "Gema tallada en formato oval con excelente brillo y transparencia. Color equilibrado y proporciones armoniosas para joyería fina."
+      },
+      "fr": {
+        "nome": "Carnaíba Nº 02",
+        "tipo": "Taillée",
+        "cor": "Vert Moyen",
+        "claridade": "Très Haute",
+        "desc": "Gemme taillée en ovale avec excellent éclat et transparence. Couleur équilibrée pour joaillerie fine."
+      },
+      "de": {
+        "nome": "Carnaíba Nr. 02",
+        "tipo": "Schliff",
+        "cor": "Mittelgrün",
+        "claridade": "Sehr Hoch",
+        "desc": "Oval geschliffener Edelstein mit exzellentem Glanz und Transparenz."
+      },
+      "hi": {
+        "nome": "Carnaíba नं. 02",
+        "tipo": "कटा हुआ",
+        "cor": "मध्यम हरा",
+        "claridade": "बहुत उच्च",
+        "desc": "उत्कृष्ट चमक और पारदर्शिता वाला अंडाकार कट। संतुलित रंग और सुंदर आभूषण के लिए सामंजस्यपूर्ण अनुपात।"
+      }
+    }
+  },
+  "carnaiba-03": {
+    "id": 3,
+    "slug": "carnaiba-03",
+    "ordem": 3,
+    "categoria": "bruta",
+    "peso": 22.1,
+    "precoBRL": null,
+    "disponivel": true,
+    "gradiente": "linear-gradient(135deg, #0d2b1a, #1a4a2e)",
+    "dimensoes": "22 × 16 × 12 mm",
+    "formato": "bruta",
+    "tratamento": "nenhum",
+    "certificacao": "cooperativa",
+    "videos": [],
+    "imagens": [
+      {
+        "id": "main",
+        "gradiente": "linear-gradient(135deg, #0d2b1a, #1a4a2e)",
+        "storagePath": "gems/carnaiba-03/main.jpg"
+      },
+      {
+        "id": "macro",
+        "gradiente": "linear-gradient(135deg, #0a1a10, #1a4a2e)",
+        "storagePath": "gems/carnaiba-03/macro.jpg"
+      }
+    ],
+    "traducoes": {
+      "pt": {
+        "nome": "Carnaíba Nº 03",
+        "tipo": "Bruta",
+        "cor": "Verde Profundo",
+        "claridade": "Média",
+        "desc": "Peça bruta de grande porte com tonalidade verde profunda. Presença imponente, perfeita para exposição ou lapidação especial."
+      },
+      "en": {
+        "nome": "Carnaíba No. 03",
+        "tipo": "Rough",
+        "cor": "Deep Green",
+        "claridade": "Medium",
+        "desc": "Large rough piece with deep green tone. Imposing presence, perfect for display or special cutting."
+      },
+      "es": {
+        "nome": "Carnaíba Nº 03",
+        "tipo": "Bruta",
+        "cor": "Verde Profundo",
+        "claridade": "Media",
+        "desc": "Pieza bruta de gran tamaño con tonalidad verde profunda. Presencia imponente, perfecta para exposición o tallado especial."
+      },
+      "fr": {
+        "nome": "Carnaíba Nº 03",
+        "tipo": "Brute",
+        "cor": "Vert Profond",
+        "claridade": "Moyenne",
+        "desc": "Grande pièce brute à tonalité vert profond. Présence imposante, parfaite pour exposition."
+      },
+      "de": {
+        "nome": "Carnaíba Nr. 03",
+        "tipo": "Roh",
+        "cor": "Tiefgrün",
+        "claridade": "Mittel",
+        "desc": "Großes Rohstück mit tiefgrüner Tönung. Beeindruckende Präsenz."
+      },
+      "hi": {
+        "nome": "Carnaíba नं. 03",
+        "tipo": "कच्चा",
+        "cor": "गहरा हरा",
+        "claridade": "मध्यम",
+        "desc": "गहरे हरे रंग का बड़ा कच्चा टुकड़ा। प्रभावशाली उपस्थिति, प्रदर्शन या विशेष कटाई के लिए उपयुक्त।"
+      }
+    }
+  },
+  "carnaiba-04": {
+    "id": 4,
+    "slug": "carnaiba-04",
+    "ordem": 4,
+    "categoria": "lapidada",
+    "peso": 1.8,
+    "precoBRL": 18500,
+    "disponivel": false,
+    "gradiente": "linear-gradient(135deg, #2d7a4f, #4db87a)",
+    "dimensoes": "7 × 5 × 4 mm",
+    "formato": "redondo",
+    "tratamento": "nenhum",
+    "certificacao": "cooperativa",
+    "videos": [],
+    "imagens": [
+      {
+        "id": "main",
+        "gradiente": "linear-gradient(135deg, #2d7a4f, #4db87a)",
+        "storagePath": "gems/carnaiba-04/main.jpg"
+      }
+    ],
+    "traducoes": {
+      "pt": {
+        "nome": "Carnaíba Nº 04",
+        "tipo": "Lapidada",
+        "cor": "Verde Claro",
+        "claridade": "Excepcional",
+        "desc": "Esmeralda lapidada redonda de claridade excepcional. Tom verde claro e luminoso, já comercializada."
+      },
+      "en": {
+        "nome": "Carnaíba No. 04",
+        "tipo": "Faceted",
+        "cor": "Light Green",
+        "claridade": "Exceptional",
+        "desc": "Round faceted emerald of exceptional clarity. Light luminous green tone, already sold."
+      },
+      "es": {
+        "nome": "Carnaíba Nº 04",
+        "tipo": "Tallada",
+        "cor": "Verde Claro",
+        "claridade": "Excepcional",
+        "desc": "Esmeralda tallada redonda de claridad excepcional. Tono verde claro y luminoso, ya comercializada."
+      },
+      "fr": {
+        "nome": "Carnaíba Nº 04",
+        "tipo": "Taillée",
+        "cor": "Vert Clair",
+        "claridade": "Exceptionnelle",
+        "desc": "Émeraude taillée ronde de clarté exceptionnelle. Déjà vendue."
+      },
+      "de": {
+        "nome": "Carnaíba Nr. 04",
+        "tipo": "Schliff",
+        "cor": "Hellgrün",
+        "claridade": "Außergewöhnlich",
+        "desc": "Rund geschliffener Smaragd außergewöhnlicher Klarheit. Bereits verkauft."
+      },
+      "hi": {
+        "nome": "Carnaíba नं. 04",
+        "tipo": "कटा हुआ",
+        "cor": "हल्का हरा",
+        "claridade": "असाधारण",
+        "desc": "असाधारण स्पष्टता वाला गोल कटा हुआ पन्ना। हल्का चमकदार हरा रंग, पहले ही बिक चुका।"
+      }
+    }
+  },
+  "carnaiba-05": {
+    "id": 5,
+    "slug": "carnaiba-05",
+    "ordem": 5,
+    "categoria": "bruta",
+    "peso": 44,
+    "precoBRL": null,
+    "disponivel": true,
+    "gradiente": "linear-gradient(135deg, #0a1a10, #1a4a2e)",
+    "dimensoes": "32 × 24 × 18 mm",
+    "formato": "bruta",
+    "tratamento": "nenhum",
+    "certificacao": "cooperativa",
+    "videos": [],
+    "imagens": [
+      {
+        "id": "main",
+        "gradiente": "linear-gradient(135deg, #0a1a10, #1a4a2e)",
+        "storagePath": "gems/carnaiba-05/main.jpg"
+      },
+      {
+        "id": "scale",
+        "gradiente": "linear-gradient(135deg, #0d2b1a, #2d7a4f)",
+        "storagePath": "gems/carnaiba-05/scale.jpg"
+      }
+    ],
+    "traducoes": {
+      "pt": {
+        "nome": "Carnaíba Nº 05",
+        "tipo": "Bruta",
+        "cor": "Verde Intenso",
+        "claridade": "Alta",
+        "desc": "Espécime bruto de 44 quilates — uma das maiores peças do nosso acervo. Coloração intensa e origem documentada."
+      },
+      "en": {
+        "nome": "Carnaíba No. 05",
+        "tipo": "Rough",
+        "cor": "Intense Green",
+        "claridade": "High",
+        "desc": "44-carat rough specimen — one of the largest pieces in our collection. Intense coloration and documented origin."
+      },
+      "es": {
+        "nome": "Carnaíba Nº 05",
+        "tipo": "Bruta",
+        "cor": "Verde Intenso",
+        "claridade": "Alta",
+        "desc": "Espécimen bruto de 44 quilates — una de las piezas más grandes de nuestro acervo. Coloración intensa y origen documentado."
+      },
+      "fr": {
+        "nome": "Carnaíba Nº 05",
+        "tipo": "Brute",
+        "cor": "Vert Intense",
+        "claridade": "Haute",
+        "desc": "Spécimen brut de 44 carats — l'une des plus grandes pièces de notre collection."
+      },
+      "de": {
+        "nome": "Carnaíba Nr. 05",
+        "tipo": "Roh",
+        "cor": "Intensives Grün",
+        "claridade": "Hoch",
+        "desc": "44-Karat-Rohexemplar — eines der größten Stücke unserer Sammlung."
+      },
+      "hi": {
+        "nome": "Carnaíba नं. 05",
+        "tipo": "कच्चा",
+        "cor": "गहरा हरा",
+        "claridade": "उच्च",
+        "desc": "44-कैरेट कच्चा नमूना — हमारे संग्रह में सबसे बड़े टुकड़ों में से एक। गहरा रंग और दस्तावेज़ित उत्पत्ति।"
+      }
+    }
+  },
+  "carnaiba-06": {
+    "id": 6,
+    "slug": "carnaiba-06",
+    "ordem": 6,
+    "categoria": "lapidada",
+    "peso": 5.6,
+    "precoBRL": 58000,
+    "disponivel": true,
+    "gradiente": "linear-gradient(135deg, #1a4a2e, #3a8a5f)",
+    "dimensoes": "11 × 9 × 6 mm",
+    "formato": "esmeralda",
+    "tratamento": "nenhum",
+    "certificacao": "cooperativa",
+    "videos": [],
+    "imagens": [
+      {
+        "id": "main",
+        "gradiente": "linear-gradient(135deg, #1a4a2e, #3a8a5f)",
+        "storagePath": "gems/carnaiba-06/main.jpg"
+      },
+      {
+        "id": "light",
+        "gradiente": "linear-gradient(135deg, #2d7a4f, #5dc98a)",
+        "storagePath": "gems/carnaiba-06/light.jpg"
+      },
+      {
+        "id": "side",
+        "gradiente": "linear-gradient(135deg, #0d3320, #1a6640)",
+        "storagePath": "gems/carnaiba-06/side.jpg"
+      }
+    ],
+    "traducoes": {
+      "pt": {
+        "nome": "Carnaíba Nº 06",
+        "tipo": "Lapidada",
+        "cor": "Verde Intenso",
+        "claridade": "Alta",
+        "desc": "Esmeralda lapidada no corte esmeralda clássico. Verde intenso com boa transparência e acabamento impecável."
+      },
+      "en": {
+        "nome": "Carnaíba No. 06",
+        "tipo": "Faceted",
+        "cor": "Intense Green",
+        "claridade": "High",
+        "desc": "Emerald cut in the classic emerald shape. Intense green with good transparency and impeccable finish."
+      },
+      "es": {
+        "nome": "Carnaíba Nº 06",
+        "tipo": "Tallada",
+        "cor": "Verde Intenso",
+        "claridade": "Alta",
+        "desc": "Esmeralda tallada en corte esmeralda clásico. Verde intenso con buena transparencia y acabado impecable."
+      },
+      "fr": {
+        "nome": "Carnaíba Nº 06",
+        "tipo": "Taillée",
+        "cor": "Vert Intense",
+        "claridade": "Haute",
+        "desc": "Émeraude taillée en taille émeraude classique. Vert intense avec bonne transparence."
+      },
+      "de": {
+        "nome": "Carnaíba Nr. 06",
+        "tipo": "Schliff",
+        "cor": "Intensives Grün",
+        "claridade": "Hoch",
+        "desc": "Smaragd im klassischen Smaragdschliff. Intensives Grün mit guter Transparenz."
+      },
+      "hi": {
+        "nome": "Carnaíba नं. 06",
+        "tipo": "कटा हुआ",
+        "cor": "गहरा हरा",
+        "claridade": "उच्च",
+        "desc": "क्लासिक emerald cut में कटा हुआ पन्ना। अच्छी पारदर्शिता और निर्दोष फिनिश के साथ गहरा हरा।"
+      }
+    }
+  }
+}
