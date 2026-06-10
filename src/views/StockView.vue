@@ -46,11 +46,11 @@
         </RouterLink>
         <a
           v-else
-          :href="whatsappUrl"
-          target="_blank"
+          :href="contactUrl"
+          :target="whatsappAvailable ? '_blank' : undefined"
           class="btn-primary"
         >
-          {{ t('stock.contactWhatsapp') }}
+          {{ whatsappAvailable ? t('stock.contactWhatsapp') : t('stock.contactEmail') }}
         </a>
       </div>
 
@@ -70,7 +70,9 @@
 
       <div v-else class="stock-cta">
         <p>{{ t('stock.ctaText') }}</p>
-        <a :href="whatsappUrl" target="_blank" class="btn-outline">{{ t('stock.ctaButton') }}</a>
+        <a :href="contactUrl" :target="whatsappAvailable ? '_blank' : undefined" class="btn-outline">
+          {{ whatsappAvailable ? t('stock.ctaButton') : t('stock.contactEmail') }}
+        </a>
       </div>
     </div>
   </div>
@@ -82,6 +84,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useGems } from '../composables/useGems'
 import { useWhatsapp } from '../composables/useWhatsapp'
+import { useContact } from '../composables/useContact'
 import GemCard from '../components/GemCard.vue'
 
 const route = useRoute()
@@ -89,6 +92,11 @@ const router = useRouter()
 const { t } = useI18n()
 const { gems, availableGems, soldGems, loading } = useGems()
 const { catalog: whatsappUrl } = useWhatsapp()
+const { whatsappAvailable, emailUrl } = useContact()
+
+const contactUrl = computed(() =>
+  whatsappAvailable.value ? whatsappUrl.value : emailUrl.value,
+)
 
 const filtroAtivo = ref('todos')
 const statusAtivo = ref('available')

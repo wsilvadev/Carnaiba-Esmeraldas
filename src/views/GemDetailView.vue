@@ -58,13 +58,21 @@
 
           <div class="detail-actions">
             <a
-              v-if="gem.disponivel"
+              v-if="gem.disponivel && whatsappAvailable"
               :href="whatsappUrl"
               target="_blank"
               class="btn-primary"
               data-ga-context="gem_detail"
             >
               {{ t('gem.consultWhatsapp') }}
+            </a>
+            <a
+              v-else-if="gem.disponivel"
+              :href="gemEmailUrl"
+              class="btn-primary"
+              data-ga-context="gem_detail_email"
+            >
+              {{ t('gem.consultEmail') }}
             </a>
             <button type="button" class="btn-outline" @click="shareGem">
               {{ t('gem.share') }}
@@ -101,6 +109,7 @@ import { useGems } from '../composables/useGems'
 import { useGemText, useGemCover } from '../composables/useGemText'
 import { usePrice } from '../composables/usePrice'
 import { useWhatsapp } from '../composables/useWhatsapp'
+import { useContact } from '../composables/useContact'
 import { trackEvent, trackGemView } from '../analytics'
 import ImageZoom from '../components/ImageZoom.vue'
 import YoutubeVideo from '../components/YoutubeVideo.vue'
@@ -110,6 +119,7 @@ const { t, locale } = useI18n()
 const { getGemBySlug, loading } = useGems()
 const { gemPrice } = usePrice()
 const { detail } = useWhatsapp()
+const { whatsappAvailable, buildEmailUrl } = useContact()
 
 const gem = computed(() => getGemBySlug(route.params.slug))
 const gemRef = computed(() => gem.value)
@@ -120,6 +130,16 @@ const price = computed(() => gem.value ? gemPrice(gem.value) : { main: '', sub: 
 const whatsappUrl = computed(() => {
   locale.value
   return detail(gemName.value, coverImage.value?.src || '')
+})
+
+const gemEmailUrl = computed(() => {
+  locale.value
+  return buildEmailUrl({
+    subjectKey: 'gem.emailSubject',
+    subjectParams: { name: gemName.value },
+    bodyKey: 'gem.emailBody',
+    bodyParams: { name: gemName.value },
+  })
 })
 
 watch([gem, gemName, locale], ([g, name]) => {

@@ -12,7 +12,6 @@ const app = createApp(App)
 app.use(router)
 app.use(i18n)
 app.use(createAnalyticsPlugin(router))
-
 Promise.all([
   initLocale(i18n),
   loadGems(),
