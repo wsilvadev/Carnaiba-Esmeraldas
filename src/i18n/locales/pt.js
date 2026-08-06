@@ -9,6 +9,14 @@ export default {
     menu: 'Menu',
     backHome: 'Início',
   },
+  meta: {
+    homeTitle: 'Esmeraldas Brasileiras Direto da Fonte',
+    homeDesc: 'Esmeraldas brutas e lapidadas extraídas da Serra da Carnaíba, na Bahia. Origem garantida, certificação ANM e preço de fonte.',
+    stockTitle: 'Estoque de Esmeraldas',
+    stockDesc: 'Veja todas as esmeraldas disponíveis para venda, com preços em Reais e ficha técnica completa.',
+    gemDesc: 'Esmeralda da Serra da Carnaíba com origem garantida e ficha técnica completa.',
+    notFoundDesc: 'Esta pedra não está mais disponível ou o link está incorreto.',
+  },
   hero: {
     location: 'Serra da Carnaíba · Bahia · Brasil',
     title: 'Esmeraldas',

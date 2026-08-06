@@ -16,6 +16,12 @@ export async function loadGems() {
     loading.value = true
     error.value = null
 
+    if (import.meta.env.SSR) {
+      loading.value = false
+      loaded.value = true
+      return
+    }
+
     try {
       const remote = await fetchGemsFromFirestore()
       if (remote?.length) {

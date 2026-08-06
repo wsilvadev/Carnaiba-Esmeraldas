@@ -9,13 +9,13 @@
     <div class="container">
       <h1>{{ t('gem.notFound') }}</h1>
       <p>{{ t('gem.notFoundDesc') }}</p>
-      <RouterLink to="/#catalogo" class="btn-outline">{{ t('gem.backToCatalog') }}</RouterLink>
+      <RouterLink :to="localize('/#catalogo')" class="btn-outline">{{ t('gem.backToCatalog') }}</RouterLink>
     </div>
   </div>
 
   <div v-else class="gem-detail">
     <div class="container">
-      <RouterLink to="/#catalogo" class="back-link">← {{ t('gem.backToCatalog') }}</RouterLink>
+      <RouterLink :to="localize('/#catalogo')" class="back-link">← {{ t('gem.backToCatalog') }}</RouterLink>
 
       <div class="detail-grid">
         <div class="detail-media">
@@ -110,12 +110,15 @@ import { useGemText, useGemCover } from '../composables/useGemText'
 import { usePrice } from '../composables/usePrice'
 import { useWhatsapp } from '../composables/useWhatsapp'
 import { useContact } from '../composables/useContact'
+import { useLocalePath } from '../composables/useLocale'
+import { usePageMeta } from '../composables/useSeo'
 import { trackEvent, trackGemView } from '../analytics'
 import ImageZoom from '../components/ImageZoom.vue'
 import YoutubeVideo from '../components/YoutubeVideo.vue'
 
 const route = useRoute()
 const { t, locale } = useI18n()
+const { localize } = useLocalePath()
 const { getGemBySlug, loading } = useGems()
 const { gemPrice } = usePrice()
 const { detail } = useWhatsapp()
@@ -142,11 +145,13 @@ const gemEmailUrl = computed(() => {
   })
 })
 
-watch([gem, gemName, locale], ([g, name]) => {
-  if (g && name) {
-    document.title = `${name} — Carnaíba Esmeraldas`
-  }
-}, { immediate: true })
+usePageMeta({
+  title: computed(() => gem.value ? gemName.value : t('gem.notFound')),
+  description: computed(() => gem.value
+    ? (gemDesc.value || t('meta.gemDesc'))
+    : t('meta.notFoundDesc')),
+  image: computed(() => coverImage.value?.src || ''),
+})
 
 watch(gem, (g) => {
   if (g && gemName.value) {

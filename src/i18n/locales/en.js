@@ -9,6 +9,14 @@ export default {
     menu: 'Menu',
     backHome: 'Home',
   },
+  meta: {
+    homeTitle: 'Brazilian Emeralds Straight from the Source',
+    homeDesc: 'Raw and cut emeralds from Serra da Carnaíba, Bahia, Brazil. Guaranteed origin, ANM certification and source pricing.',
+    stockTitle: 'Emerald Stock',
+    stockDesc: 'Browse all emeralds available for sale, with prices and full technical details.',
+    gemDesc: 'Emerald from Serra da Carnaíba with guaranteed origin and full technical details.',
+    notFoundDesc: 'This stone is no longer available or the link is incorrect.',
+  },
   hero: {
     location: 'Serra da Carnaíba · Bahia · Brazil',
     title: 'Emeralds',

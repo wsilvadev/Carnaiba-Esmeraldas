@@ -9,6 +9,14 @@ export default {
     menu: 'Menu',
     backHome: 'Accueil',
   },
+  meta: {
+    homeTitle: 'Émeraudes Brésiliennes Direct de la Source',
+    homeDesc: 'Émeraudes brutes et taillées de la Serra da Carnaíba, Bahia, Brésil. Origine garantie, certification ANM et prix de source.',
+    stockTitle: 'Stock d\'Émeraudes',
+    stockDesc: 'Consultez toutes les émeraudes disponibles à la vente, avec prix et fiche technique complète.',
+    gemDesc: 'Émeraude de la Serra da Carnaíba avec origine garantie et fiche technique complète.',
+    notFoundDesc: 'Cette pierre n\'est plus disponible ou le lien est incorrect.',
+  },
   hero: {
     location: 'Serra da Carnaíba · Bahia · Brésil',
     title: 'Émeraudes',

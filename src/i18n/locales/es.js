@@ -9,6 +9,14 @@ export default {
     menu: 'Menú',
     backHome: 'Inicio',
   },
+  meta: {
+    homeTitle: 'Esmeraldas Brasileñas Directo de la Fuente',
+    homeDesc: 'Esmeraldas brutas y talladas de Serra da Carnaíba, Bahía, Brasil. Origen garantizado, certificación ANM y precio de origen.',
+    stockTitle: 'Stock de Esmeraldas',
+    stockDesc: 'Consulta todas las esmeraldas disponibles para la venta, con precios y ficha técnica completa.',
+    gemDesc: 'Esmeralda de Serra da Carnaíba con origen garantizado y ficha técnica completa.',
+    notFoundDesc: 'Esta piedra ya no está disponible o el enlace es incorrecto.',
+  },
   hero: {
     location: 'Serra da Carnaíba · Bahia · Brasil',
     title: 'Esmeraldas',

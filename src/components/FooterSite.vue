@@ -12,19 +12,19 @@
         <div class="footer-links">
           <h4>{{ t('footer.navigation') }}</h4>
           <ul>
-            <li><RouterLink to="/#catalogo">{{ t('nav.catalog') }}</RouterLink></li>
-            <li><RouterLink to="/#origem">{{ t('footer.ourOrigin') }}</RouterLink></li>
-            <li><RouterLink to="/#certificacao">{{ t('nav.certification') }}</RouterLink></li>
-            <li><RouterLink to="/#galeria">{{ t('nav.gallery') }}</RouterLink></li>
-            <li><RouterLink to="/#contato">{{ t('nav.contact') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#catalogo')">{{ t('nav.catalog') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#origem')">{{ t('footer.ourOrigin') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#certificacao')">{{ t('nav.certification') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#galeria')">{{ t('nav.gallery') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#contato')">{{ t('nav.contact') }}</RouterLink></li>
           </ul>
         </div>
         <div class="footer-links">
           <h4>{{ t('footer.info') }}</h4>
           <ul>
-            <li><RouterLink to="/#certificacao">{{ t('footer.anmDocs') }}</RouterLink></li>
-            <li><RouterLink to="/#certificacao">{{ t('footer.invoice') }}</RouterLink></li>
-            <li><RouterLink to="/#contato">{{ t('footer.shipping') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#certificacao')">{{ t('footer.anmDocs') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#certificacao')">{{ t('footer.invoice') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/#contato')">{{ t('footer.shipping') }}</RouterLink></li>
             <li><a :href="emailUrl">{{ t('footer.email') }}</a></li>
             <li v-if="whatsappAvailable"><a :href="whatsapp" target="_blank">WhatsApp</a></li>
           </ul>
@@ -50,10 +50,12 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '../composables/useLocale'
 import { useWhatsapp } from '../composables/useWhatsapp'
 import { useContact } from '../composables/useContact'
 
 const { t } = useI18n()
+const { localize } = useLocalePath()
 const { site: whatsapp } = useWhatsapp()
 const { whatsappAvailable, emailUrl } = useContact()
 </script>

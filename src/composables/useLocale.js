@@ -1,6 +1,8 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import { trackLocaleChange, trackLocaleDetected } from '../analytics'
+import { localizePath, pathWithoutLocale, localeFromPath, PREFIXED_LOCALES, DEFAULT_LOCALE } from '../router'
 
 const COUNTRY_CONFIG = {
   BR: { locale: 'pt', currency: 'BRL' },
@@ -58,6 +60,14 @@ function configForCountry(code) {
 function resolveCurrency(localeCode) {
   if (LOCALE_CURRENCY[localeCode]) return LOCALE_CURRENCY[localeCode]
   return configForCountry(countryCode.value).currency
+}
+
+function readSavedLocale() {
+  try {
+    return localStorage.getItem(LOCALE_STORAGE_KEY)
+  } catch {
+    return null
+  }
 }
 
 async function detectCountry() {
@@ -125,26 +135,59 @@ async function fetchRates(targetCurrency) {
   }
 }
 
-export async function initLocale(i18n) {
-  const savedLocale = localStorage.getItem(LOCALE_STORAGE_KEY)
+export async function initLocale(i18n, { router, routePath, isClient } = {}) {
+  const isSSR = !isClient
 
-  const geoConfig = await detectCountry()
+  let localeToUse = DEFAULT_LOCALE
+  let shouldRedirect = false
 
-  const localeToUse = savedLocale || geoConfig.locale
+  const urlLocale = isSSR
+    ? localeFromPath(routePath)
+    : localeFromPath(window.location.pathname)
+
+  if (isSSR || PREFIXED_LOCALES.includes(urlLocale)) {
+    localeToUse = urlLocale
+  } else {
+    const savedLocale = readSavedLocale()
+    if (savedLocale) {
+      localeToUse = savedLocale
+      shouldRedirect = localeToUse !== DEFAULT_LOCALE
+    } else {
+      const geoConfig = await detectCountry()
+      localeToUse = geoConfig.locale
+      shouldRedirect = localeToUse !== DEFAULT_LOCALE
+    }
+  }
+
   i18n.global.locale.value = localeToUse
-  document.documentElement.lang = localeToUse
+  if (typeof document !== 'undefined') document.documentElement.lang = localeToUse
 
   currency.value = resolveCurrency(localeToUse)
-  await fetchRates(currency.value)
+  if (!isSSR) await fetchRates(currency.value)
   localeReady.value = true
 
-  if (!savedLocale) {
+  if (!isSSR && shouldRedirect && router) {
+    const currentPath = window.location.pathname
+    const target = localizePath(pathWithoutLocale(currentPath), localeToUse)
+    if (target !== currentPath) {
+      await router.push({ path: target, query: window.location.search, hash: window.location.hash })
+    }
+  }
+
+  if (!isSSR && !readSavedLocale()) {
     trackLocaleDetected(localeToUse, currency.value, countryCode.value)
   }
 }
 
+export function useLocalePath() {
+  const { locale } = useI18n()
+  const localize = (path) => localizePath(path, locale.value)
+  return { localize, locale }
+}
+
 export function useLocale() {
   const { locale, t } = useI18n()
+  const router = useRouter()
 
   const availableLocales = [
     { code: 'hi', label: 'हिन्दी', flag: '🇮🇳' },
@@ -172,13 +215,23 @@ export function useLocale() {
     const previous = locale.value
     locale.value = code
     document.documentElement.lang = code
-    localStorage.setItem(LOCALE_STORAGE_KEY, code)
-    localStorage.removeItem(CURRENCY_STORAGE_KEY)
+    try { localStorage.setItem(LOCALE_STORAGE_KEY, code) } catch {}
+    try { localStorage.removeItem(CURRENCY_STORAGE_KEY) } catch {}
 
     currency.value = resolveCurrency(code)
     await fetchRates(currency.value)
 
     trackLocaleChange(previous, code, currency.value)
+  }
+
+  async function switchLocale(code) {
+    if (locale.value === code) return
+    const { path, query, hash } = router.currentRoute.value
+    await setLocale(code)
+    const targetPath = localizePath(pathWithoutLocale(path), code)
+    if (targetPath !== path) {
+      await router.push({ path: targetPath, query, hash })
+    }
   }
 
   async function setCurrency(code) {
@@ -212,6 +265,7 @@ export function useLocale() {
     isManualCurrency,
     availableLocales,
     setLocale,
+    switchLocale,
     setCurrency,
     applyCountryPricing,
     resetLocaleOverride,

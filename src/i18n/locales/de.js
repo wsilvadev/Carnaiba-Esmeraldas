@@ -9,6 +9,14 @@ export default {
     menu: 'Menü',
     backHome: 'Start',
   },
+  meta: {
+    homeTitle: 'Brasilianische Smaragde Direkt von der Quelle',
+    homeDesc: 'Roh- und geschliffene Smaragde aus der Serra da Carnaíba, Bahia, Brasilien. Garantierte Herkunft, ANM-Zertifizierung und Herkunftspreis.',
+    stockTitle: 'Smaragd-Bestand',
+    stockDesc: 'Alle zum Verkauf verfügbaren Smaragde mit Preisen und vollständiger technischer Beschreibung.',
+    gemDesc: 'Smaragd aus der Serra da Carnaíba mit garantierter Herkunft und vollständiger technischer Beschreibung.',
+    notFoundDesc: 'Dieser Stein ist nicht mehr verfügbar oder der Link ist falsch.',
+  },
   hero: {
     location: 'Serra da Carnaíba · Bahia · Brasilien',
     title: 'Smaragde',

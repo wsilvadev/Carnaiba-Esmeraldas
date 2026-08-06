@@ -31,7 +31,7 @@
 
       <div class="catalogo-cta">
         <p>{{ t('catalog.ctaText') }}</p>
-        <RouterLink to="/estoque" class="btn-outline" data-ga-event="cta_click" data-ga-label="view_stock">{{ t('catalog.ctaButton') }}</RouterLink>
+        <RouterLink :to="localize('/estoque')" class="btn-outline" data-ga-event="cta_click" data-ga-label="view_stock">{{ t('catalog.ctaButton') }}</RouterLink>
       </div>
     </div>
   </section>
@@ -41,9 +41,11 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useGems } from '../composables/useGems'
+import { useLocalePath } from '../composables/useLocale'
 import GemCard from './GemCard.vue'
 
 const { t } = useI18n()
+const { localize } = useLocalePath()
 const { gems, loading } = useGems()
 
 const filtroAtivo = ref('todos')
