@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carnaibaesmeraldas.com.br/sitemap.xml
