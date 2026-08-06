@@ -94,7 +94,7 @@ const certCards = computed(() => [
   color: var(--cream);
   margin-bottom: 0.2rem;
 }
-.doc-desc { font-size: 0.75rem; color: rgba(245,240,232,0.45); line-height: 1.6; }
+.doc-desc { font-size: 0.75rem; color: rgba(245,240,232,0.6); line-height: 1.6; }
 .cert-cards { display: flex; flex-direction: column; gap: 1rem; }
 .cert-card {
   background: rgba(13,43,26,0.4);

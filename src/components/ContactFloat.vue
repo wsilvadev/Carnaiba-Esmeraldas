@@ -144,7 +144,7 @@ onUnmounted(() => {
 
 .float-btn--wpp {
   background: #25d366;
-  color: #fff;
+  color: #0a1a10;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
 }
 

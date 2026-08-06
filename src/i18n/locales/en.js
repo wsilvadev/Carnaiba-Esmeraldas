@@ -45,6 +45,8 @@ export default {
     consult: 'Inquire',
     viewDetails: 'View Details',
     loading: 'Loading catalog…',
+    emptyTitle: 'No gems available',
+    emptyText: 'There are no stones published in the catalog yet. Contact us to see the full inventory.',
     ctaText: 'We have stones not listed here. Contact us to see the full inventory.',
     ctaButton: 'View Full Inventory',
   },

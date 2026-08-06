@@ -106,7 +106,7 @@ const { whatsappAvailable, emailUrl } = useContact()
 }
 .contato-alt {
   font-size: 0.72rem;
-  color: rgba(245,240,232,0.4);
+  color: rgba(245,240,232,0.6);
   margin-bottom: 2.5rem;
 }
 .wpp-btn {
@@ -115,7 +115,7 @@ const { whatsappAvailable, emailUrl } = useContact()
   gap: 0.75rem;
   padding: 1.1rem 2.5rem;
   background: #25D366;
-  color: #fff;
+  color: #0a1a10;
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 400;
@@ -126,7 +126,7 @@ const { whatsappAvailable, emailUrl } = useContact()
   transition: all 0.3s;
   text-decoration: none;
 }
-.wpp-btn:hover { background: #128C7E; transform: translateY(-2px); }
+.wpp-btn:hover { background: #1db95c; transform: translateY(-2px); }
 .email-btn {
   display: inline-flex;
   align-items: center;
@@ -171,7 +171,7 @@ const { whatsappAvailable, emailUrl } = useContact()
   font-size: 0.55rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.3);
+  color: rgba(245,240,232,0.6);
 }
 .info-value {
   font-family: var(--font-display);
@@ -179,5 +179,10 @@ const { whatsappAvailable, emailUrl } = useContact()
   color: rgba(245,240,232,0.7);
 }
 .info-divider { width: 1px; height: 40px; background: rgba(201,168,76,0.15); }
-@media (max-width: 600px) { .info-divider { display: none; } }
+@media (max-width: 600px) {
+  .contato-actions { flex-direction: column; }
+  .contato-actions .wpp-btn,
+  .contato-actions .email-btn { width: 100%; justify-content: center; }
+  .info-divider { display: none; }
+}
 </style>

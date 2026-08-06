@@ -263,7 +263,7 @@ watch(() => props.images, () => {
   background: linear-gradient(transparent, rgba(10,26,16,0.9));
   font-size: 0.6rem;
   letter-spacing: 0.1em;
-  color: rgba(245,240,232,0.45);
+  color: rgba(245,240,232,0.6);
   text-align: center;
   pointer-events: none;
 }

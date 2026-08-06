@@ -249,7 +249,7 @@ watch(
   font-size: 0.7rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.6);
   margin-bottom: 1.5rem;
 }
 .filters {

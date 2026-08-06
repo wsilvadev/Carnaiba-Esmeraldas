@@ -7,7 +7,7 @@
   --muted: #8fa898;
   --accent: #3d9b6a;
   --accent-hover: #4db87a;
-  --danger: #c45c5c;
+  --danger: #d06a6a;
   --warning: #c9a227;
   --radius: 10px;
   --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -58,7 +58,7 @@ textarea {
 
 .btn-primary {
   background: var(--accent);
-  color: #fff;
+  color: #0a1410;
 }
 
 .btn-primary:hover:not(:disabled) {

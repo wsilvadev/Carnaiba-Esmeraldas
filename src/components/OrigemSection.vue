@@ -3,7 +3,7 @@
     <div class="origem-grid">
       <div class="origem-visual">
         <div class="visual-block">
-          <div class="gem-large">◆</div>
+          <img src="/sobre_nos.png" :alt="t('origin.title')" class="origin-image" />
           <div class="origin-badge">
             <span class="badge-num">{{ t('origin.badgeNum') }}</span>
             <span class="badge-text" v-html="badgeText" />
@@ -86,15 +86,12 @@ const pilares = computed(() => [
   border: 1px solid rgba(201,168,76,0.1);
   pointer-events: none;
 }
-.gem-large {
-  font-size: 10rem;
-  color: rgba(45,122,79,0.4);
-  text-shadow: 0 0 80px rgba(77,184,122,0.3), inset 0 0 30px rgba(168,230,193,0.1);
-  animation: gemFloat 4s ease-in-out infinite;
-}
-@keyframes gemFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
+.origin-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .origin-badge {
   position: absolute;
@@ -117,7 +114,7 @@ const pilares = computed(() => [
   font-size: 0.55rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(10,26,16,0.7);
+  color: #0a1a10;
   text-align: center;
   line-height: 1.5;
 }
@@ -130,7 +127,7 @@ const pilares = computed(() => [
 .coords span {
   font-size: 0.65rem;
   letter-spacing: 0.06em;
-  color: rgba(245,240,232,0.3);
+  color: rgba(245,240,232,0.6);
   text-transform: uppercase;
 }
 .coords-place {
@@ -183,6 +180,5 @@ const pilares = computed(() => [
 }
 @media (max-width: 900px) {
   .origem-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .origem-visual { display: none; }
 }
 </style>

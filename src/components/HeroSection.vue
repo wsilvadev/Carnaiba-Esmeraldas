@@ -177,7 +177,7 @@ const heroDesc = computed(() => t('hero.desc').replace(', ', ',<br/>'))
   font-size: 0.55rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.4);
+  color: rgba(245,240,232,0.6);
   writing-mode: vertical-rl;
 }
 .scroll-line {

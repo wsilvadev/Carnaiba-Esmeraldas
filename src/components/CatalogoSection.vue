@@ -23,6 +23,12 @@
         <GemCard v-for="gem in gemsFiltered" :key="gem.slug" :gem="gem" />
       </div>
 
+      <div v-if="!loading && gemsFiltered.length === 0" class="catalog-empty">
+        <span class="empty-icon">⬡</span>
+        <h3>{{ t('catalog.emptyTitle') }}</h3>
+        <p>{{ t('catalog.emptyText') }}</p>
+      </div>
+
       <div class="catalogo-cta">
         <p>{{ t('catalog.ctaText') }}</p>
         <RouterLink to="/estoque" class="btn-outline" data-ga-event="cta_click" data-ga-label="view_stock">{{ t('catalog.ctaButton') }}</RouterLink>
@@ -79,7 +85,7 @@ const gemsFiltered = computed(() => {
   font-size: 0.7rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.6);
   margin-bottom: 1.5rem;
 }
 .filters {
@@ -125,5 +131,33 @@ const gemsFiltered = computed(() => {
 .catalogo-cta .btn-outline {
   display: inline-block;
   text-decoration: none;
+}
+.catalog-empty {
+  text-align: center;
+  padding: 5rem 2rem;
+  border: 1px dashed rgba(201,168,76,0.25);
+  background: rgba(13,43,26,0.2);
+}
+.empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+.catalog-empty h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+.catalog-empty p {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(245,240,232,0.55);
+  max-width: 420px;
+  margin: 0 auto;
 }
 </style>

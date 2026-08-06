@@ -45,6 +45,8 @@ export default {
     consult: 'Consultar',
     viewDetails: 'Ver Detalles',
     loading: 'Cargando catálogo…',
+    emptyTitle: 'Ninguna gema disponible',
+    emptyText: 'Aún no hay piedras publicadas en el catálogo. Contáctenos para ver el inventario completo.',
     ctaText: 'Tenemos piedras que no están listadas aquí. Contáctenos para ver el inventario completo.',
     ctaButton: 'Ver Inventario Completo',
   },

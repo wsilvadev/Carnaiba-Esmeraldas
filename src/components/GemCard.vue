@@ -227,7 +227,7 @@ const price = computed(() => gemPrice(props.gem))
   font-size: 0.55rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.6);
 }
 .spec-value {
   font-size: 0.78rem;
@@ -254,7 +254,7 @@ const price = computed(() => gemPrice(props.gem))
 }
 .gem-price-sub {
   font-size: 0.6rem;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.6);
 }
 .gem-cta {
   font-size: 0.65rem;

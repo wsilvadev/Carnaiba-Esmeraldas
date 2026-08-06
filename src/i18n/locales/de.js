@@ -45,6 +45,8 @@ export default {
     consult: 'Anfragen',
     viewDetails: 'Details Ansehen',
     loading: 'Katalog wird geladen…',
+    emptyTitle: 'Keine Edelsteine verfügbar',
+    emptyText: 'Im Katalog sind noch keine Steine veröffentlicht. Kontaktieren Sie uns für das vollständige Inventar.',
     ctaText: 'Wir haben Steine, die hier nicht aufgeführt sind. Kontaktieren Sie uns für das vollständige Inventar.',
     ctaButton: 'Vollständiges Inventar',
   },

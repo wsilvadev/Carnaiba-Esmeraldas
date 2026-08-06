@@ -247,14 +247,14 @@ async function shareGem() {
 .price-sub {
   display: block;
   font-size: 0.72rem;
-  color: rgba(245,240,232,0.45);
+  color: rgba(245,240,232,0.6);
   margin-top: 0.35rem;
 }
 .price-note {
   display: block;
   font-size: 0.6rem;
   letter-spacing: 0.1em;
-  color: rgba(245,240,232,0.3);
+  color: rgba(245,240,232,0.6);
   margin-top: 0.25rem;
 }
 
@@ -293,7 +293,7 @@ async function shareGem() {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.6);
 }
 .spec-value {
   font-size: 0.8rem;
@@ -323,7 +323,7 @@ async function shareGem() {
 }
 .detail-videos.empty p {
   font-size: 0.8rem;
-  color: rgba(245,240,232,0.4);
+  color: rgba(245,240,232,0.6);
 }
 .videos-grid {
   display: grid;
@@ -350,7 +350,7 @@ async function shareGem() {
   font-size: 0.7rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.6);
 }
 
 @media (max-width: 900px) {

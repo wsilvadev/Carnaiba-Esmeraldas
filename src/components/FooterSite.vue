@@ -82,7 +82,7 @@ const { whatsappAvailable, emailUrl } = useContact()
 .footer-tagline {
   font-size: 0.75rem;
   line-height: 2;
-  color: rgba(245,240,232,0.4);
+  color: rgba(245,240,232,0.6);
 }
 .footer-links h4, .footer-contact h4 {
   font-family: var(--font-body);
@@ -96,7 +96,7 @@ const { whatsappAvailable, emailUrl } = useContact()
 .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
 .footer-links a {
   font-size: 0.75rem;
-  color: rgba(245,240,232,0.45);
+  color: rgba(245,240,232,0.6);
   transition: color 0.2s;
   letter-spacing: 0.05em;
   text-decoration: none;
@@ -122,7 +122,7 @@ const { whatsappAvailable, emailUrl } = useContact()
   border-color: rgba(37,211,102,0.4);
 }
 .footer-email {
-  display: inline-block;
+  display: block;
   font-size: 0.72rem;
   color: rgba(245,240,232,0.55);
   margin-bottom: 1rem;
@@ -132,7 +132,7 @@ const { whatsappAvailable, emailUrl } = useContact()
 .footer-email:hover { color: var(--gold); }
 .footer-hours, .footer-loc {
   font-size: 0.72rem;
-  color: rgba(245,240,232,0.35);
+  color: rgba(245,240,232,0.6);
   margin-bottom: 0.3rem;
 }
 .footer-bottom {
@@ -146,7 +146,7 @@ const { whatsappAvailable, emailUrl } = useContact()
 .footer-bottom p {
   font-size: 0.65rem;
   letter-spacing: 0.1em;
-  color: rgba(245,240,232,0.2);
+  color: rgba(245,240,232,0.6);
 }
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
