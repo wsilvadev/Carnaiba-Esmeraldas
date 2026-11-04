@@ -11,7 +11,18 @@
       <div class="galeria-grid">
         <div class="video-card featured">
           <div class="video-placeholder extraction">
-            <img src="/extracao.gif" :alt="t('gallery.extraction')" class="extraction-gif" />
+            <video
+              class="extraction-video"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+              poster="/extracao-poster.jpg"
+              :aria-label="t('gallery.extraction')"
+            >
+              <source src="/extracao.mp4" type="video/mp4" />
+            </video>
             <p class="video-label extraction-label">{{ t('gallery.extraction') }}</p>
           </div>
           <div class="video-info">
@@ -26,8 +37,11 @@
             <img
               :src="foto.src"
               :alt="t('gallery.photo', { n: i + 1 })"
+              :width="foto.width"
+              :height="foto.height"
               class="foto-img"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -56,10 +70,10 @@ import YoutubeVideo from './YoutubeVideo.vue'
 const { t } = useI18n()
 
 const fotos = [
-  { src: '/esmeralda_1.png' },
-  { src: '/esmeralda_2.png' },
-  { src: '/esmeralda_3.png' },
-  { src: '/esmeralda_4.png' },
+  { src: '/esmeralda_1.jpg', width: 1200, height: 717 },
+  { src: '/esmeralda_2.jpg', width: 1200, height: 1170 },
+  { src: '/esmeralda_3.jpg', width: 1200, height: 1058 },
+  { src: '/esmeralda_4.jpg', width: 1195, height: 1200 },
 ]
 </script>
 
@@ -124,7 +138,7 @@ const fotos = [
   height: 3.5rem;
 }
 .video-placeholder:hover .play-icon { color: var(--gold); transform: scale(1.1); }
-.extraction-gif {
+.extraction-video {
   position: absolute;
   inset: 0;
   width: 100%;

@@ -18,7 +18,7 @@
 import { computed } from 'vue'
 import { useLocale } from '../composables/useLocale'
 
-const { locale, t, currency, countryLabel, availableLocales, setLocale } = useLocale()
+const { locale, t, currency, countryLabel, availableLocales, switchLocale } = useLocale()
 
 const currencyCode = computed(() => currency.value)
 
@@ -33,7 +33,7 @@ const currencyTitle = computed(() => {
 })
 
 async function onLocaleChange(e) {
-  await setLocale(e.target.value)
+  await switchLocale(e.target.value)
 }
 </script>
 

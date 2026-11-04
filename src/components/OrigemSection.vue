@@ -3,7 +3,15 @@
     <div class="origem-grid">
       <div class="origem-visual">
         <div class="visual-block">
-          <img src="/sobre_nos.png" :alt="t('origin.title')" class="origin-image" />
+          <img
+            src="/sobre_nos.jpg"
+            :alt="t('origin.title')"
+            class="origin-image"
+            width="985"
+            height="1000"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="origin-badge">
             <span class="badge-num">{{ t('origin.badgeNum') }}</span>
             <span class="badge-text" v-html="badgeText" />

@@ -1,7 +1,7 @@
 <template>
   <div class="stock-page">
     <div class="container">
-      <RouterLink to="/#catalogo" class="back-link">← {{ t('stock.backToCatalog') }}</RouterLink>
+      <RouterLink :to="localize('/#catalogo')" class="back-link">← {{ t('stock.backToCatalog') }}</RouterLink>
 
       <div class="section-header">
         <p class="section-label">{{ sectionLabel }}</p>
@@ -39,7 +39,7 @@
         <p>{{ emptyMessage }}</p>
         <RouterLink
           v-if="statusAtivo === 'sold'"
-          to="/estoque"
+          :to="localize('/estoque')"
           class="btn-outline"
         >
           {{ t('stock.viewAvailable') }}
@@ -85,11 +85,14 @@ import { useI18n } from 'vue-i18n'
 import { useGems } from '../composables/useGems'
 import { useWhatsapp } from '../composables/useWhatsapp'
 import { useContact } from '../composables/useContact'
+import { useLocalePath } from '../composables/useLocale'
+import { SITE_DOMAIN, usePageMeta } from '../composables/useSeo'
 import GemCard from '../components/GemCard.vue'
 
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const { localize } = useLocalePath()
 const { gems, availableGems, soldGems, loading } = useGems()
 const { catalog: whatsappUrl } = useWhatsapp()
 const { whatsappAvailable, emailUrl } = useContact()
@@ -173,13 +176,31 @@ function syncStatusFromRoute() {
 
 watch(() => route.query.view, syncStatusFromRoute, { immediate: true })
 
-watch(
-  [sectionTitle, statusAtivo],
-  ([title]) => {
-    document.title = `${title} — Carnaíba Esmeraldas`
+const structuredData = computed(() => [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: sectionTitle.value,
+    description: sectionDesc.value,
+    url: SITE_DOMAIN + route.path,
+    isPartOf: { '@id': `${SITE_DOMAIN}/#website` },
+    inLanguage: locale.value,
   },
-  { immediate: true },
-)
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('nav.backHome'), item: SITE_DOMAIN + localize('/') },
+      { '@type': 'ListItem', position: 2, name: sectionTitle.value, item: SITE_DOMAIN + route.path },
+    ],
+  },
+])
+
+usePageMeta({
+  title: sectionTitle,
+  description: sectionDesc,
+  jsonLd: structuredData,
+})
 </script>
 
 <style scoped>

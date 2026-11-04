@@ -1,23 +1,35 @@
 const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID
 
 let enabled = false
+let scriptLoaded = false
 
 function canTrack() {
   return enabled && typeof window.gtag === 'function'
 }
 
 export function initAnalytics() {
-  if (!MEASUREMENT_ID || enabled) return
+  if (!MEASUREMENT_ID || enabled || typeof window === 'undefined') return
 
   window.dataLayer = window.dataLayer || []
   window.gtag = function gtag(...args) {
     window.dataLayer.push(args)
   }
 
-  const script = document.createElement('script')
-  script.async = true
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`
-  document.head.appendChild(script)
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+  })
+  window.gtag('consent', 'update', { analytics_storage: 'granted' })
+
+  if (!scriptLoaded) {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`
+    document.head.appendChild(script)
+    scriptLoaded = true
+  }
 
   window.gtag('js', new Date())
   window.gtag('config', MEASUREMENT_ID, {
@@ -26,6 +38,51 @@ export function initAnalytics() {
   })
 
   enabled = true
+}
+
+function clearAnalyticsCookies() {
+  if (typeof document === 'undefined') return
+
+  const names = document.cookie
+    .split(';')
+    .map((entry) => entry.trim().split('=')[0])
+    .filter((name) =>
+      name === '_ga' ||
+      name === '_gid' ||
+      name === '_gat' ||
+      name.startsWith('_ga_') ||
+      name.startsWith('_gcl') ||
+      name.startsWith('_gac')
+    )
+
+  const host = window.location.hostname
+  const rootDomain = host.endsWith('.com.br')
+    ? host.split('.').slice(-3).join('.')
+    : host.split('.').slice(-2).join('.')
+  const domains = new Set(['', host, `.${host}`, rootDomain, `.${rootDomain}`])
+
+  for (const name of names) {
+    for (const domain of domains) {
+      const domainAttr = domain ? `; domain=${domain}` : ''
+      document.cookie = `${name}=; Max-Age=0; path=/${domainAttr}; SameSite=Lax`
+    }
+  }
+}
+
+export function disableAnalytics() {
+  if (typeof window === 'undefined') return
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('consent', 'update', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+    })
+  }
+
+  enabled = false
+  clearAnalyticsCookies()
 }
 
 export function trackPageView(path, title) {

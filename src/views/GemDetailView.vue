@@ -9,13 +9,13 @@
     <div class="container">
       <h1>{{ t('gem.notFound') }}</h1>
       <p>{{ t('gem.notFoundDesc') }}</p>
-      <RouterLink to="/#catalogo" class="btn-outline">{{ t('gem.backToCatalog') }}</RouterLink>
+      <RouterLink :to="localize('/#catalogo')" class="btn-outline">{{ t('gem.backToCatalog') }}</RouterLink>
     </div>
   </div>
 
   <div v-else class="gem-detail">
     <div class="container">
-      <RouterLink to="/#catalogo" class="back-link">← {{ t('gem.backToCatalog') }}</RouterLink>
+      <RouterLink :to="localize('/#catalogo')" class="back-link">← {{ t('gem.backToCatalog') }}</RouterLink>
 
       <div class="detail-grid">
         <div class="detail-media">
@@ -110,12 +110,15 @@ import { useGemText, useGemCover } from '../composables/useGemText'
 import { usePrice } from '../composables/usePrice'
 import { useWhatsapp } from '../composables/useWhatsapp'
 import { useContact } from '../composables/useContact'
+import { useLocalePath } from '../composables/useLocale'
+import { SITE_DOMAIN, SITE_NAME, usePageMeta } from '../composables/useSeo'
 import { trackEvent, trackGemView } from '../analytics'
 import ImageZoom from '../components/ImageZoom.vue'
 import YoutubeVideo from '../components/YoutubeVideo.vue'
 
 const route = useRoute()
 const { t, locale } = useI18n()
+const { localize } = useLocalePath()
 const { getGemBySlug, loading } = useGems()
 const { gemPrice } = usePrice()
 const { detail } = useWhatsapp()
@@ -126,6 +129,65 @@ const gemRef = computed(() => gem.value)
 const { gemName, gemTipo, gemDesc, specs } = useGemText(gemRef)
 const { coverImage } = useGemCover(gemRef)
 const price = computed(() => gem.value ? gemPrice(gem.value) : { main: '', sub: null })
+
+const structuredData = computed(() => {
+  const g = gem.value
+  if (!g) return []
+
+  const name = gemName.value
+  const desc = gemDesc.value || t('meta.gemDesc')
+  const image = coverImage.value?.src
+  const itemUrl = SITE_DOMAIN + route.path
+
+  const offer = typeof g.precoBRL === 'number'
+    ? {
+        '@type': 'Offer',
+        url: itemUrl,
+        priceCurrency: 'BRL',
+        price: g.precoBRL,
+        availability: g.disponivel ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
+        seller: { '@id': `${SITE_DOMAIN}/#organization` },
+      }
+    : null
+
+  const product = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    description: desc,
+    sku: g.slug,
+    ...(image ? { image: [image] } : {}),
+    category: 'Gemstone',
+    material: 'Emerald',
+    brand: { '@type': 'Brand', name: SITE_NAME },
+    countryOfOrigin: { '@type': 'Country', name: 'Brazil' },
+    ...(offer ? { offers: offer } : {}),
+  }
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('nav.backHome'), item: SITE_DOMAIN + localize('/') },
+      { '@type': 'ListItem', position: 2, name: t('stock.title'), item: SITE_DOMAIN + localize('/estoque') },
+      { '@type': 'ListItem', position: 3, name, item: itemUrl },
+    ],
+  }
+
+  const videos = (g.videos || [])
+    .filter(v => v.youtubeId)
+    .map(v => ({
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: v.title || name,
+      description: desc,
+      thumbnailUrl: [`https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg`],
+      contentUrl: `https://www.youtube.com/watch?v=${v.youtubeId}`,
+      embedUrl: `https://www.youtube.com/embed/${v.youtubeId}`,
+    }))
+
+  return [product, breadcrumb, ...videos]
+})
 
 const whatsappUrl = computed(() => {
   locale.value
@@ -142,11 +204,15 @@ const gemEmailUrl = computed(() => {
   })
 })
 
-watch([gem, gemName, locale], ([g, name]) => {
-  if (g && name) {
-    document.title = `${name} — Carnaíba Esmeraldas`
-  }
-}, { immediate: true })
+usePageMeta({
+  title: computed(() => gem.value ? gemName.value : t('gem.notFound')),
+  description: computed(() => gem.value
+    ? (gemDesc.value || t('meta.gemDesc'))
+    : t('meta.notFoundDesc')),
+  image: computed(() => coverImage.value?.src || ''),
+  jsonLd: structuredData,
+  noindex: computed(() => !gem.value),
+})
 
 watch(gem, (g) => {
   if (g && gemName.value) {

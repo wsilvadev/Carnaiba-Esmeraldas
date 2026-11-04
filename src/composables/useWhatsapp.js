@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '5513996327011'
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '5574981287563'
 
 export function useWhatsapp() {
   const { t } = useI18n()

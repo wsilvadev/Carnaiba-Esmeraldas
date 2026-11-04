@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { fetchGemsFromFirestore, getFallbackGems } from '../services/gemsService'
+import { fetchGemsFromRest } from '../services/firestoreRest'
 
 const gems = ref(getFallbackGems())
 const loading = ref(false)
@@ -17,10 +18,17 @@ export async function loadGems() {
     error.value = null
 
     try {
-      const remote = await fetchGemsFromFirestore()
+      const remote = import.meta.env.SSR
+        ? await fetchGemsFromRest({
+            projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+            apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+            cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
+          })
+        : await fetchGemsFromFirestore()
+
       if (remote?.length) {
         gems.value = remote
-        source.value = 'firestore'
+        source.value = import.meta.env.SSR ? 'firestore-rest' : 'firestore'
       }
     } catch (err) {
       error.value = err

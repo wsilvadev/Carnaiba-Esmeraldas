@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "prebuild": "npm run sitemap",
+    "build": "vite-ssg build",
     "preview": "vite preview",
     "admin:dev": "vite --config admin/vite.config.js",
     "admin:build": "vite build --config admin/vite.config.js",
@@ -14,7 +16,9 @@
   },
   "dependencies": {
     "@vueuse/core": "^14.3.0",
+    "@vueuse/head": "^2.0.0",
     "firebase": "^12.14.0",
+    "vite-ssg": "^28.3.0",
     "vue": "^3.5.32",
     "vue-i18n": "^10.0.8",
     "vue-router": "^4.6.4"

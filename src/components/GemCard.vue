@@ -5,14 +5,14 @@
     @mouseleave="hovered = false"
   >
     <RouterLink
-      :to="`/esmeralda/${gem.slug}`"
+      :to="gemLink"
       class="gem-image-wrap"
       data-ga-event="gem_card_click"
       :data-ga-item-id="gem.slug"
       :data-ga-item-name="gemName"
     >
       <div class="gem-placeholder" :style="coverStyle">
-        <img v-if="coverImage?.src" :src="coverImage.src" :alt="gemName" class="gem-cover" />
+        <img v-if="coverImage?.src" :src="coverImage.src" :alt="gemName" class="gem-cover" loading="lazy" decoding="async" />
         <div v-else class="gem-icon">◆</div>
         <span class="gem-status" :class="gem.disponivel ? 'disponivel' : 'vendida'">
           <span v-if="gem.disponivel" class="status-dot" aria-hidden="true" />
@@ -40,7 +40,7 @@
           <span v-if="price.sub" class="gem-price-sub">{{ price.sub }}</span>
         </div>
         <RouterLink
-          :to="`/esmeralda/${gem.slug}`"
+          :to="gemLink"
           class="gem-cta"
           data-ga-event="gem_card_click"
           :data-ga-item-id="gem.slug"
@@ -59,14 +59,18 @@ import { ref, computed, toRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { usePrice } from '../composables/usePrice'
 import { useGemText, useGemCover } from '../composables/useGemText'
+import { useLocalePath } from '../composables/useLocale'
 
 const props = defineProps({
   gem: { type: Object, required: true },
 })
 
 const { t, locale } = useI18n()
+const { localize } = useLocalePath()
 const { gemPrice } = usePrice()
 const hovered = ref(false)
+
+const gemLink = computed(() => localize(`/esmeralda/${props.gem.slug}`))
 
 const gemRef = toRef(props, 'gem')
 const { gemName, gemTipo, specs } = useGemText(gemRef)

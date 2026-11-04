@@ -22,6 +22,7 @@
           :src="currentImage.src"
           :alt="alt"
           draggable="false"
+          decoding="async"
         />
         <div
           v-else
@@ -47,7 +48,7 @@
         :class="['thumb', { active: activeIndex === i }]"
         @click="selectImage(i)"
       >
-        <img v-if="img.src" :src="img.src" :alt="`${alt} ${i + 1}`" />
+        <img v-if="img.src" :src="img.src" :alt="`${alt} ${i + 1}`" loading="lazy" decoding="async" />
         <div v-else class="thumb-placeholder" :style="{ background: img.gradiente || gradiente }" />
       </button>
     </div>

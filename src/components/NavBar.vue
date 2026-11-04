@@ -1,17 +1,17 @@
 <template>
   <nav :class="['navbar', { scrolled: isScrolled, 'menu-open': menuOpen }]" ref="navbarRef">
     <div class="nav-inner">
-      <RouterLink to="/" class="nav-logo" data-ga-event="nav_click" data-ga-label="home" @click="menuOpen = false">
+      <RouterLink :to="localize('/')" class="nav-logo" data-ga-event="nav_click" data-ga-label="home" @click="menuOpen = false">
         <span class="logo-main brand-logo-main">Carnaíba</span>
         <span class="logo-sub brand-logo-sub">Esmeraldas</span>
       </RouterLink>
       <ul class="nav-links">
-        <li><RouterLink to="/estoque" data-ga-event="nav_click" data-ga-label="stock">{{ t('nav.stock') }}</RouterLink></li>
-        <li><RouterLink to="/#catalogo" data-ga-event="nav_click" data-ga-label="catalog">{{ t('nav.catalog') }}</RouterLink></li>
-        <li><RouterLink to="/#origem" data-ga-event="nav_click" data-ga-label="origin">{{ t('nav.origin') }}</RouterLink></li>
-        <li><RouterLink to="/#certificacao" data-ga-event="nav_click" data-ga-label="certification">{{ t('nav.certification') }}</RouterLink></li>
-        <li><RouterLink to="/#galeria" data-ga-event="nav_click" data-ga-label="gallery">{{ t('nav.gallery') }}</RouterLink></li>
-        <li><RouterLink to="/#contato" class="nav-cta" data-ga-event="nav_click" data-ga-label="contact">{{ t('nav.contact') }}</RouterLink></li>
+        <li><RouterLink :to="localize('/estoque')" data-ga-event="nav_click" data-ga-label="stock">{{ t('nav.stock') }}</RouterLink></li>
+        <li><RouterLink :to="localize('/#catalogo')" data-ga-event="nav_click" data-ga-label="catalog">{{ t('nav.catalog') }}</RouterLink></li>
+        <li><RouterLink :to="localize('/#origem')" data-ga-event="nav_click" data-ga-label="origin">{{ t('nav.origin') }}</RouterLink></li>
+        <li><RouterLink :to="localize('/#certificacao')" data-ga-event="nav_click" data-ga-label="certification">{{ t('nav.certification') }}</RouterLink></li>
+        <li><RouterLink :to="localize('/#galeria')" data-ga-event="nav_click" data-ga-label="gallery">{{ t('nav.gallery') }}</RouterLink></li>
+        <li><RouterLink :to="localize('/#contato')" class="nav-cta" data-ga-event="nav_click" data-ga-label="contact">{{ t('nav.contact') }}</RouterLink></li>
         <li><LocaleSwitcher /></li>
       </ul>
       <div class="nav-right-mobile">
@@ -43,12 +43,12 @@
         :aria-hidden="!menuOpen"
         :style="menuStyle"
       >
-        <RouterLink to="/estoque" @click="menuOpen = false">{{ t('nav.stock') }}</RouterLink>
-        <RouterLink to="/#catalogo" @click="menuOpen = false">{{ t('nav.catalog') }}</RouterLink>
-        <RouterLink to="/#origem" @click="menuOpen = false">{{ t('nav.origin') }}</RouterLink>
-        <RouterLink to="/#certificacao" @click="menuOpen = false">{{ t('nav.certification') }}</RouterLink>
-        <RouterLink to="/#galeria" @click="menuOpen = false">{{ t('nav.gallery') }}</RouterLink>
-        <RouterLink to="/#contato" class="mobile-menu-cta" @click="menuOpen = false">{{ t('nav.contact') }}</RouterLink>
+        <RouterLink :to="localize('/estoque')" @click="menuOpen = false">{{ t('nav.stock') }}</RouterLink>
+        <RouterLink :to="localize('/#catalogo')" @click="menuOpen = false">{{ t('nav.catalog') }}</RouterLink>
+        <RouterLink :to="localize('/#origem')" @click="menuOpen = false">{{ t('nav.origin') }}</RouterLink>
+        <RouterLink :to="localize('/#certificacao')" @click="menuOpen = false">{{ t('nav.certification') }}</RouterLink>
+        <RouterLink :to="localize('/#galeria')" @click="menuOpen = false">{{ t('nav.gallery') }}</RouterLink>
+        <RouterLink :to="localize('/#contato')" class="mobile-menu-cta" @click="menuOpen = false">{{ t('nav.contact') }}</RouterLink>
       </div>
     </Teleport>
   </nav>
@@ -58,9 +58,11 @@
 import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '../composables/useLocale'
 import LocaleSwitcher from './LocaleSwitcher.vue'
 
 const { t } = useI18n()
+const { localize } = useLocalePath()
 const route = useRoute()
 const isScrolled = ref(false)
 const menuOpen = ref(false)
