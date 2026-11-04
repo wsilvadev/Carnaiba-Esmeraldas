@@ -12,7 +12,7 @@
       :data-ga-item-name="gemName"
     >
       <div class="gem-placeholder" :style="coverStyle">
-        <img v-if="coverImage?.src" :src="coverImage.src" :alt="gemName" class="gem-cover" />
+        <img v-if="coverImage?.src" :src="coverImage.src" :alt="gemName" class="gem-cover" loading="lazy" decoding="async" />
         <div v-else class="gem-icon">◆</div>
         <span class="gem-status" :class="gem.disponivel ? 'disponivel' : 'vendida'">
           <span v-if="gem.disponivel" class="status-dot" aria-hidden="true" />

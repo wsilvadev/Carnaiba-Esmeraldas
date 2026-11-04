@@ -1,51 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://carnaibaesmeraldas.com.br/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/en/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/es/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/fr/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/de/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/hi/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/"/>
   </url>
   <url>
     <loc>https://carnaibaesmeraldas.com.br/estoque</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/estoque"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/estoque"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/estoque"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/estoque"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/estoque"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/estoque"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/estoque"/>
   </url>
   <url>
-    <loc>https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-01</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://carnaibaesmeraldas.com.br/en/estoque</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/estoque"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/estoque"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/estoque"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/estoque"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/estoque"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/estoque"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/estoque"/>
   </url>
   <url>
-    <loc>https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-02</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://carnaibaesmeraldas.com.br/es/estoque</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/estoque"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/estoque"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/estoque"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/estoque"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/estoque"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/estoque"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/estoque"/>
   </url>
   <url>
-    <loc>https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-03</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://carnaibaesmeraldas.com.br/fr/estoque</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/estoque"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/estoque"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/estoque"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/estoque"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/estoque"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/estoque"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/estoque"/>
   </url>
   <url>
-    <loc>https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-04</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://carnaibaesmeraldas.com.br/de/estoque</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/estoque"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/estoque"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/estoque"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/estoque"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/estoque"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/estoque"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/estoque"/>
   </url>
   <url>
-    <loc>https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-05</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://carnaibaesmeraldas.com.br/hi/estoque</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/estoque"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/estoque"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/estoque"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/estoque"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/estoque"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/estoque"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/estoque"/>
   </url>
   <url>
-    <loc>https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-06</loc>
-    <lastmod>2026-08-06</lastmod>
+    <loc>https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta</loc>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/en/esmeralda/carnaiba-esmeralda-bruta</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/es/esmeralda/carnaiba-esmeralda-bruta</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/fr/esmeralda/carnaiba-esmeralda-bruta</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/de/esmeralda/carnaiba-esmeralda-bruta</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+  </url>
+  <url>
+    <loc>https://carnaibaesmeraldas.com.br/hi/esmeralda/carnaiba-esmeralda-bruta</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://carnaibaesmeraldas.com.br/en/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://carnaibaesmeraldas.com.br/es/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://carnaibaesmeraldas.com.br/fr/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://carnaibaesmeraldas.com.br/de/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://carnaibaesmeraldas.com.br/hi/esmeralda/carnaiba-esmeralda-bruta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://carnaibaesmeraldas.com.br/esmeralda/carnaiba-esmeralda-bruta"/>
   </url>
 </urlset>

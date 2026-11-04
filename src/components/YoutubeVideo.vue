@@ -11,7 +11,10 @@
           :src="thumbnailUrl"
           :alt="title || playLabel"
           class="youtube-thumb-img"
+          width="480"
+          height="360"
           loading="lazy"
+          decoding="async"
         />
         <span class="youtube-play" aria-hidden="true">▶</span>
       </button>

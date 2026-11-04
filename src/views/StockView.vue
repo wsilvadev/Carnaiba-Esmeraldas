@@ -79,19 +79,19 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useGems } from '../composables/useGems'
 import { useWhatsapp } from '../composables/useWhatsapp'
 import { useContact } from '../composables/useContact'
 import { useLocalePath } from '../composables/useLocale'
-import { usePageMeta } from '../composables/useSeo'
+import { SITE_DOMAIN, usePageMeta } from '../composables/useSeo'
 import GemCard from '../components/GemCard.vue'
 
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const { localize } = useLocalePath()
 const { gems, availableGems, soldGems, loading } = useGems()
 const { catalog: whatsappUrl } = useWhatsapp()
@@ -176,9 +176,30 @@ function syncStatusFromRoute() {
 
 watch(() => route.query.view, syncStatusFromRoute, { immediate: true })
 
+const structuredData = computed(() => [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: sectionTitle.value,
+    description: sectionDesc.value,
+    url: SITE_DOMAIN + route.path,
+    isPartOf: { '@id': `${SITE_DOMAIN}/#website` },
+    inLanguage: locale.value,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('nav.backHome'), item: SITE_DOMAIN + localize('/') },
+      { '@type': 'ListItem', position: 2, name: sectionTitle.value, item: SITE_DOMAIN + route.path },
+    ],
+  },
+])
+
 usePageMeta({
   title: sectionTitle,
   description: sectionDesc,
+  jsonLd: structuredData,
 })
 </script>
 

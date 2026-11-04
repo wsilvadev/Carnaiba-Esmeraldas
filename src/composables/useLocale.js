@@ -2,6 +2,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { trackLocaleChange, trackLocaleDetected } from '../analytics'
+import { htmlLangFor } from './useSeo'
 import { localizePath, pathWithoutLocale, localeFromPath, PREFIXED_LOCALES, DEFAULT_LOCALE } from '../router'
 
 const COUNTRY_CONFIG = {
@@ -160,7 +161,7 @@ export async function initLocale(i18n, { router, routePath, isClient } = {}) {
   }
 
   i18n.global.locale.value = localeToUse
-  if (typeof document !== 'undefined') document.documentElement.lang = localeToUse
+  if (typeof document !== 'undefined') document.documentElement.lang = htmlLangFor(localeToUse)
 
   currency.value = resolveCurrency(localeToUse)
   if (!isSSR) await fetchRates(currency.value)
@@ -214,7 +215,7 @@ export function useLocale() {
   async function setLocale(code) {
     const previous = locale.value
     locale.value = code
-    document.documentElement.lang = code
+    document.documentElement.lang = htmlLangFor(code)
     try { localStorage.setItem(LOCALE_STORAGE_KEY, code) } catch {}
     try { localStorage.removeItem(CURRENCY_STORAGE_KEY) } catch {}
 
