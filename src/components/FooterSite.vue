@@ -25,6 +25,8 @@
             <li><RouterLink :to="localize('/#certificacao')">{{ t('footer.anmDocs') }}</RouterLink></li>
             <li><RouterLink :to="localize('/#certificacao')">{{ t('footer.invoice') }}</RouterLink></li>
             <li><RouterLink :to="localize('/#contato')">{{ t('footer.shipping') }}</RouterLink></li>
+            <li><RouterLink :to="localize('/politica-de-cookies')">{{ t('footer.cookiePolicy') }}</RouterLink></li>
+            <li><button type="button" class="footer-link-btn" @click="openPreferences">{{ t('footer.cookiePreferences') }}</button></li>
             <li><a :href="emailUrl">{{ t('footer.email') }}</a></li>
             <li v-if="whatsappAvailable"><a :href="whatsapp" target="_blank">WhatsApp</a></li>
           </ul>
@@ -53,11 +55,13 @@ import { useI18n } from 'vue-i18n'
 import { useLocalePath } from '../composables/useLocale'
 import { useWhatsapp } from '../composables/useWhatsapp'
 import { useContact } from '../composables/useContact'
+import { useConsent } from '../composables/useConsent'
 
 const { t } = useI18n()
 const { localize } = useLocalePath()
 const { site: whatsapp } = useWhatsapp()
 const { whatsappAvailable, emailUrl } = useContact()
+const { openPreferences } = useConsent()
 </script>
 
 <style scoped>
@@ -96,14 +100,24 @@ const { whatsappAvailable, emailUrl } = useContact()
   margin-bottom: 1.2rem;
 }
 .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-.footer-links a {
+.footer-links a,
+.footer-link-btn {
+  font-family: var(--font-body);
   font-size: 0.75rem;
   color: rgba(245,240,232,0.6);
   transition: color 0.2s;
   letter-spacing: 0.05em;
   text-decoration: none;
+  text-align: left;
 }
-.footer-links a:hover { color: var(--cream); }
+.footer-links a:hover,
+.footer-link-btn:hover { color: var(--cream); }
+.footer-link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
 .footer-wpp {
   display: inline-flex;
   align-items: center;

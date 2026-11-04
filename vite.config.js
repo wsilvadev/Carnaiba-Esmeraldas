@@ -30,6 +30,7 @@ export default defineConfig(async ({ mode }) => {
         for (const locale of SUPPORTED_LOCALES) {
           paths.push(localizePath('/', locale))
           paths.push(localizePath('/estoque', locale))
+          paths.push(localizePath('/politica-de-cookies', locale))
           for (const slug of gemSlugs) {
             paths.push(localizePath(`/esmeralda/${slug}`, locale))
           }

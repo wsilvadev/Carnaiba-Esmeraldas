@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import GemDetailView from '../views/GemDetailView.vue'
 import StockView from '../views/StockView.vue'
+import CookiePolicyView from '../views/CookiePolicyView.vue'
 import {
   SUPPORTED_LOCALES,
   PREFIXED_LOCALES,
@@ -24,6 +25,7 @@ export function createLocalizedRoutes() {
   const baseRoutes = [
     { path: '/', name: 'home', component: HomeView },
     { path: '/estoque', name: 'stock', component: StockView },
+    { path: '/politica-de-cookies', name: 'cookie-policy', component: CookiePolicyView },
     { path: '/esmeralda/:slug', name: 'gem', component: GemDetailView },
   ]
 

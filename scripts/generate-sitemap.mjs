@@ -24,6 +24,7 @@ const HREFLANG_MAP = {
 const staticRoutes = [
   { path: '/', changefreq: 'daily', priority: '1.0' },
   { path: '/estoque', changefreq: 'daily', priority: '0.8' },
+  { path: '/politica-de-cookies', changefreq: 'yearly', priority: '0.3' },
 ]
 
 function loadEnvFile() {

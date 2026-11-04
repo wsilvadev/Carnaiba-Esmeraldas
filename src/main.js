@@ -5,6 +5,7 @@ import { routes } from './router'
 import { initLocale } from './composables/useLocale'
 import { loadGems } from './composables/useGems'
 import { createAnalyticsPlugin } from './plugins/analytics'
+import { initConsent } from './composables/useConsent'
 import './main.css'
 
 export const createApp = ViteSSG(
@@ -19,7 +20,10 @@ export const createApp = ViteSSG(
   },
   async ({ app, router, isClient, routePath }) => {
     app.use(i18n)
-    if (isClient) app.use(createAnalyticsPlugin(router))
+    if (isClient) {
+      initConsent()
+      app.use(createAnalyticsPlugin(router))
+    }
 
     await Promise.all([
       initLocale(i18n, { router, routePath, isClient }),
