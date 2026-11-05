@@ -22,7 +22,6 @@ const { localeReady } = useLocale()
 </script>
 
 <style>
-
 .locale-loading {
   position: fixed;
   inset: 0;
@@ -34,5 +33,4 @@ const { localeReady } = useLocale()
 @keyframes fadeOut {
   to { opacity: 0; visibility: hidden; }
 }
-
 </style>
