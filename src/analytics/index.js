@@ -1,43 +1,89 @@
-const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID
-
+let analytics = null
+let logEventFn = null
+let setCollectionFn = null
+let initPromise = null
+let shouldCollect = false
 let enabled = false
-let scriptLoaded = false
+const pending = []
 
 function canTrack() {
-  return enabled && typeof window.gtag === 'function'
+  return enabled && Boolean(analytics) && typeof logEventFn === 'function'
+}
+
+function send(eventName, params) {
+  if (!shouldCollect && !enabled) return
+  if (canTrack()) {
+    logEventFn(analytics, eventName, params)
+    return
+  }
+  if (shouldCollect) pending.push([eventName, params])
+}
+
+function flushPending() {
+  while (pending.length && canTrack()) {
+    const [eventName, params] = pending.shift()
+    logEventFn(analytics, eventName, params)
+  }
 }
 
 export function initAnalytics() {
-  if (!MEASUREMENT_ID || enabled || typeof window === 'undefined') return
+  if (typeof window === 'undefined') return Promise.resolve()
 
-  window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag(...args) {
-    window.dataLayer.push(args)
+  shouldCollect = true
+
+  if (analytics && typeof setCollectionFn === 'function') {
+    setCollectionFn(analytics, true)
+    enabled = true
+    flushPending()
+    return Promise.resolve()
   }
 
-  window.gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-  })
-  window.gtag('consent', 'update', { analytics_storage: 'granted' })
+  if (canTrack()) return Promise.resolve()
+  if (initPromise) return initPromise
 
-  if (!scriptLoaded) {
-    const script = document.createElement('script')
-    script.async = true
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`
-    document.head.appendChild(script)
-    scriptLoaded = true
-  }
+  initPromise = (async () => {
+    try {
+      const {
+        initializeAnalytics,
+        isSupported,
+        logEvent,
+        setAnalyticsCollectionEnabled,
+      } = await import('firebase/analytics')
+      const { app } = await import('../firebase/app')
 
-  window.gtag('js', new Date())
-  window.gtag('config', MEASUREMENT_ID, {
-    send_page_view: false,
-    anonymize_ip: true,
-  })
+      if (!app) throw new Error('Firebase não configurado')
+      if (!(await isSupported())) throw new Error('Firebase Analytics não suportado neste navegador')
 
-  enabled = true
+      if (!analytics) {
+        analytics = initializeAnalytics(app, {
+          config: {
+            send_page_view: false,
+            anonymize_ip: true,
+            allow_ad_personalization_signals: false,
+          },
+        })
+      }
+
+      logEventFn = logEvent
+      setCollectionFn = setAnalyticsCollectionEnabled
+
+      if (!shouldCollect) {
+        setCollectionFn(analytics, false)
+        return
+      }
+
+      setCollectionFn(analytics, true)
+      enabled = true
+      flushPending()
+    } catch (error) {
+      pending.length = 0
+      shouldCollect = false
+      initPromise = null
+      console.warn('[analytics] Firebase Analytics indisponível:', error)
+    }
+  })()
+
+  return initPromise
 }
 
 function clearAnalyticsCookies() {
@@ -70,25 +116,25 @@ function clearAnalyticsCookies() {
 }
 
 export function disableAnalytics() {
-  if (typeof window === 'undefined') return
+  shouldCollect = false
+  enabled = false
+  pending.length = 0
 
-  if (typeof window.gtag === 'function') {
-    window.gtag('consent', 'update', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-    })
+  if (analytics && typeof setCollectionFn === 'function') {
+    try {
+      setCollectionFn(analytics, false)
+    } catch {
+      // A instância pode ter sido descartada pelo navegador.
+    }
   }
 
-  enabled = false
   clearAnalyticsCookies()
 }
 
 export function trackPageView(path, title) {
-  if (!canTrack()) return
+  if (typeof window === 'undefined') return
 
-  window.gtag('event', 'page_view', {
+  send('page_view', {
     page_path: path,
     page_title: title || document.title,
     page_location: `${window.location.origin}${path}`,
@@ -96,8 +142,7 @@ export function trackPageView(path, title) {
 }
 
 export function trackEvent(eventName, params = {}) {
-  if (!canTrack()) return
-  window.gtag('event', eventName, params)
+  send(eventName, params)
 }
 
 function readGaParams(el) {
