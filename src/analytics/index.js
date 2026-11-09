@@ -183,6 +183,15 @@ function handleDocumentClick(event) {
     })
   }
 
+  const emailLink = event.target.closest('a[href^="mailto:"]')
+  if (emailLink) {
+    trackEvent('email_click', {
+      context: emailContext(emailLink),
+      link_url: emailLink.href,
+      ...readGaParams(emailLink),
+    })
+  }
+
   const filterBtn = event.target.closest('.filter-btn')
   if (filterBtn) {
     trackEvent('filter_click', {

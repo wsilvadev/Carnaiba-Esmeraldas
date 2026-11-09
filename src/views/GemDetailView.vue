@@ -150,19 +150,21 @@ const structuredData = computed(() => {
       }
     : null
 
-  const product = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name,
-    description: desc,
-    sku: g.slug,
-    ...(image ? { image: [image] } : {}),
-    category: 'Gemstone',
-    material: 'Emerald',
-    brand: { '@type': 'Brand', name: SITE_NAME },
-    countryOfOrigin: { '@type': 'Country', name: 'Brazil' },
-    ...(offer ? { offers: offer } : {}),
-  }
+  const product = offer
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name,
+        description: desc,
+        sku: g.slug,
+        ...(image ? { image: [image] } : {}),
+        category: 'Gemstone',
+        material: 'Emerald',
+        brand: { '@type': 'Brand', name: SITE_NAME },
+        countryOfOrigin: { '@type': 'Country', name: 'Brazil' },
+        offers: offer,
+      }
+    : null
 
   const breadcrumb = {
     '@context': 'https://schema.org',
@@ -186,7 +188,7 @@ const structuredData = computed(() => {
       embedUrl: `https://www.youtube.com/embed/${v.youtubeId}`,
     }))
 
-  return [product, breadcrumb, ...videos]
+  return [...(product ? [product] : []), breadcrumb, ...videos]
 })
 
 const whatsappUrl = computed(() => {
