@@ -96,7 +96,9 @@ export function useGemText(gemSource) {
   function enumLabel(type, value) {
     if (!value) return ''
     locale.value
-    return i18n.global.t(`${type}.${value}`)
+    const key = `${type}.${value}`
+    const translated = i18n.global.t(key)
+    return translated === key ? value : translated
   }
 
   const specs = computed(() => {

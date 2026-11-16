@@ -41,6 +41,24 @@
           <label for="formato">Formato</label>
           <input id="formato" v-model="form.formato" placeholder="bruta, oval, redondo…" />
         </div>
+        <div class="field">
+          <label for="tratamento">Tratamento</label>
+          <select id="tratamento" v-model="treatmentSelect">
+            <option v-for="option in treatmentOptions" :key="option.value" :value="option.value">
+              {{ option.label }}
+            </option>
+            <option value="outro">Outro (descrever)</option>
+          </select>
+        </div>
+        <div v-if="treatmentSelect === 'outro'" class="field">
+          <label for="tratamento-outro">Descrição do tratamento</label>
+          <input
+            id="tratamento-outro"
+            v-model="treatmentCustom"
+            placeholder="Ex.: óleo incolor"
+            @input="form.tratamento = treatmentCustom"
+          />
+        </div>
       </div>
 
       <label class="checkbox">
@@ -308,6 +326,27 @@ const form = reactive({
   videos: [],
 })
 
+const treatmentOptions = [
+  { value: 'nenhum', label: 'Nenhum tratamento' },
+  { value: 'oleo', label: 'Óleo' },
+  { value: 'resina', label: 'Resina' },
+  { value: 'cera', label: 'Cera' },
+  { value: 'preenchimento', label: 'Preenchimento de fraturas' },
+  { value: 'termico', label: 'Tratamento térmico' },
+]
+const knownTreatments = new Set(treatmentOptions.map((option) => option.value))
+const treatmentCustom = ref('')
+const treatmentSelect = computed({
+  get: () => (knownTreatments.has(form.tratamento) ? form.tratamento : 'outro'),
+  set: (value) => {
+    if (value === 'outro') {
+      form.tratamento = treatmentCustom.value
+      return
+    }
+    form.tratamento = value
+  },
+})
+
 const images = ref([])
 let imageKey = 0
 
@@ -396,6 +435,8 @@ watch(
       })),
     })
 
+    treatmentCustom.value = knownTreatments.has(form.tratamento) ? '' : form.tratamento
+
     images.value = []
     for (const img of gem.imagens || []) {
       addImage({ ...img, previewUrl: img.previewUrl || '' })
@@ -471,7 +512,7 @@ function handleSubmit() {
       disponivel: form.disponivel,
       dimensoes: form.dimensoes,
       formato: form.formato,
-      tratamento: form.tratamento,
+      tratamento: form.tratamento || 'nenhum',
       certificacao: form.certificacao,
       gradiente: form.gradiente,
       traducoes,

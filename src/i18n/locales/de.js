@@ -221,7 +221,14 @@ export default {
     '06': { name: 'Carnaíba Nr. 06', tipo: 'Schliff', cor: 'Intensives Grün', claridade: 'Hoch', desc: 'Smaragd im klassischen Smaragdschliff. Intensives Grün mit guter Transparenz.' },
   },
   formats: { bruta: 'Roh', oval: 'Oval', redondo: 'Rund', esmeralda: 'Smaragdschliff' },
-  treatments: { nenhum: 'Keine Behandlung' },
+  treatments: {
+    nenhum: 'Keine Behandlung',
+    oleo: 'Öl',
+    resina: 'Harz',
+    cera: 'Wachs',
+    preenchimento: 'Rissfüllung',
+    termico: 'Wärmebehandlung',
+  },
   certifications: { cooperativa: 'Genossenschaftsdokument' },
   cookies: {
     bannerTitle: 'Ihre Privatsphäre',

@@ -264,6 +264,11 @@ export default {
   },
   treatments: {
     nenhum: 'कोई उपचार नहीं',
+    oleo: 'तेल',
+    resina: 'राल',
+    cera: 'मोम',
+    preenchimento: 'दरार भरना',
+    termico: 'ताप उपचार',
   },
   certifications: {
     cooperativa: 'सहकारी दस्तावेज़',

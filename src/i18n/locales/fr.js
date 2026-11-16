@@ -221,7 +221,14 @@ export default {
     '06': { name: 'Carnaíba Nº 06', tipo: 'Taillée', cor: 'Vert Intense', claridade: 'Haute', desc: 'Émeraude taillée en taille émeraude classique. Vert intense avec bonne transparence.' },
   },
   formats: { bruta: 'Brute', oval: 'Ovale', redondo: 'Rond', esmeralda: 'Taille Émeraude' },
-  treatments: { nenhum: 'Aucun traitement' },
+  treatments: {
+    nenhum: 'Aucun traitement',
+    oleo: 'Huile',
+    resina: 'Résine',
+    cera: 'Cire',
+    preenchimento: 'Remplissage de fractures',
+    termico: 'Traitement thermique',
+  },
   certifications: { cooperativa: 'Document de la Coopérative' },
   cookies: {
     bannerTitle: 'Votre confidentialité',

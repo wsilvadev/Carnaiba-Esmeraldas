@@ -51,7 +51,7 @@ function absoluteUrl(url) {
 
 function buildOrganization(description) {
   const email = import.meta.env.VITE_CONTACT_EMAIL
-  const phone = String(import.meta.env.VITE_WHATSAPP_NUMBER || '').replace(/\D/g, '')
+  const phone = String(import.meta.env.VITE_WHATSAPP_NUMBER || '5574981133466').replace(/\D/g, '')
 
   return {
     '@context': 'https://schema.org',

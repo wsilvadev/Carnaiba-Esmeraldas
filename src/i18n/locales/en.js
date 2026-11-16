@@ -264,6 +264,11 @@ export default {
   },
   treatments: {
     nenhum: 'No treatment',
+    oleo: 'Oil',
+    resina: 'Resin',
+    cera: 'Wax',
+    preenchimento: 'Fracture filling',
+    termico: 'Heat treatment',
   },
   certifications: {
     cooperativa: 'Cooperative Document',

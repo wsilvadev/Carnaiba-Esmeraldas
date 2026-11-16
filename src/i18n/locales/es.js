@@ -264,6 +264,11 @@ export default {
   },
   treatments: {
     nenhum: 'Sin tratamiento',
+    oleo: 'Aceite',
+    resina: 'Resina',
+    cera: 'Cera',
+    preenchimento: 'Relleno de fracturas',
+    termico: 'Tratamiento térmico',
   },
   certifications: {
     cooperativa: 'Documento de la Cooperativa',

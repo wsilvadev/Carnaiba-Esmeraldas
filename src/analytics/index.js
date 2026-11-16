@@ -168,6 +168,23 @@ function whatsappContext(link) {
   return 'unknown'
 }
 
+function emailContext(link) {
+  if (link.dataset.gaContext) return link.dataset.gaContext
+  if (
+    link.classList.contains('float-btn--email') ||
+    link.classList.contains('float-action--email')
+  ) {
+    return 'float_email'
+  }
+  if (link.classList.contains('email-btn')) return 'contact_email'
+  if (link.classList.contains('footer-email')) return 'footer_email'
+
+  const section = link.closest('section[id]')
+  if (section?.id) return section.id
+
+  return 'unknown'
+}
+
 function handleDocumentClick(event) {
   const gaTarget = event.target.closest('[data-ga-event]')
   if (gaTarget) {
